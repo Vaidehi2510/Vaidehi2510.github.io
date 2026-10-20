@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vaidehi Pandya</title>
+<meta name="description" content="Vaidehi Pandya designs AI products that show their work. Case studies: Patchsentry, AURORA and Watchpost, WARBREAK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with an evidence margin. Every case study pairs the story with the numbers and links that back it up, the way a good AI finding cites its source. */
+:root {
+  --bg: #F2F5F6;
+  --surface: #FFFFFF;
+  --ink: #13202A;
+  --muted: #4E5E69;
+  --line: #D3DCE0;
+  --accent: #0A6670;
+  --mark: #F4C95D;
+  --mark-ink: #13202A;
+  --ok: #1D7447;
+  --warn: #9A5600;
+  --crit: #B3261E;
+  --wire: #E6ECEE;
+  --hl: #F4C95D;
+
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --step-4: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+  --small: 0.875rem;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1418; --surface: #141E24; --ink: #E3EBEE; --muted: #9DADB5; --line: #26343C;
+    --accent: #62C3CC; --mark: #D9AE45; --mark-ink: #0D1418; --ok: #5DC08A; --warn: #E2A24C; --crit: #F07B73; --wire: #1C2830; --hl: rgba(217, 174, 69, 0.42);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1418; --surface: #141E24; --ink: #E3EBEE; --muted: #9DADB5; --line: #26343C;
+  --accent: #62C3CC; --mark: #D9AE45; --mark-ink: #0D1418; --ok: #5DC08A; --warn: #E2A24C; --crit: #F07B73; --wire: #1C2830; --hl: rgba(217, 174, 69, 0.42);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+
+.wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.site-head {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-weight: 700; font-size: 1.125rem; color: var(--ink); text-decoration: none; }
+.site-nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9375rem; }
+.site-nav a { color: var(--ink); text-decoration: none; }
+.site-nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { padding-block: clamp(48px, 8vw, 96px) clamp(40px, 6vw, 72px); }
+.hero h1 { font-size: var(--step-4); font-weight: 750; max-width: 15ch; }
+.hl { background: linear-gradient(transparent 58%, var(--hl) 58%, var(--hl) 92%, transparent 92%); color: inherit; padding: 0 0.06em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero-lede { margin-top: 24px; max-width: 40rem; font-size: var(--step-1); color: var(--muted); }
+.hero-meta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+  font-size: 0.875rem; background: var(--surface); color: var(--ink);
+}
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+
+/* Principles */
+.principles { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.principles .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.principle { padding: 28px 24px 28px 0; display: grid; gap: 8px; }
+.principle + .principle { border-left: 1px solid var(--line); padding-left: 24px; }
+.principle h2 { font-size: var(--step-1); font-weight: 700; }
+.principle p { color: var(--muted); font-size: 0.9375rem; }
+.principle .src { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
+
+/* Work index */
+.section { padding-block: clamp(56px, 8vw, 96px); }
+.section-head { display: grid; gap: 10px; margin-bottom: 32px; }
+.section-head h2 { font-size: var(--step-3); font-weight: 750; }
+.index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.index a {
+  display: grid; gap: 10px; align-content: start;
+  padding: 20px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink); text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.index a:hover { border-color: var(--accent); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .index a, .index a:hover { transition: none; transform: none; } }
+.index h3 { font-size: var(--step-1); }
+.index p { color: var(--muted); font-size: 0.9375rem; }
+.index .tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+
+/* Case study */
+.case { border-top: 1px solid var(--line); }
+.case-head { display: grid; gap: 14px; max-width: 48rem; }
+.case-head h2 { font-size: var(--step-3); font-weight: 750; }
+.case-head .sum { font-size: var(--step-1); color: var(--muted); }
+.meta {
+  margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 16px;
+}
+.meta div { display: grid; gap: 2px; min-width: 0; }
+.meta dt { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.meta dd { margin: 0; font-size: 0.9375rem; }
+.case-body { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 48px; align-items: start; }
+.story { display: grid; gap: 32px; max-width: 42rem; min-width: 0; }
+.story h3 { font-size: var(--step-2); font-weight: 700; margin-bottom: 10px; }
+.story p + p { margin-top: 12px; }
+.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.decisions li { display: grid; gap: 4px; padding-left: 18px; border-left: 2px solid var(--line); }
+.decisions strong { font-weight: 700; }
+
+.evidence {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px);
+  display: grid; gap: 18px; padding: 20px;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
+  min-width: 0;
+}
+.evidence .eyebrow { color: var(--accent); }
+.stat { display: grid; gap: 2px; }
+.stat b { font-family: var(--display); font-size: 1.75rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 0.875rem; color: var(--muted); }
+.evidence .links { display: grid; gap: 6px; font-size: 0.9375rem; border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* Wireframes */
+figure { margin: 48px 0 0; }
+figcaption { margin-top: 12px; font-size: var(--small); color: var(--muted); max-width: 48rem; }
+figcaption b { font-family: var(--mono); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-right: 6px; }
+.frame {
+  border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+  padding: clamp(14px, 3vw, 28px); overflow-x: auto;
+}
+.wf { font-size: 0.875rem; color: var(--ink); min-width: 0; }
+.bar { display: inline-block; height: 9px; border-radius: 5px; background: var(--wire); vertical-align: middle; }
+.badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 0.75rem; border-radius: 6px; padding: 3px 8px; border: 1px solid currentColor; white-space: nowrap; }
+.b-warn { color: var(--warn); }
+.b-ok { color: var(--ok); }
+.b-crit { color: var(--crit); }
+.b-ai { color: var(--accent); border-style: dashed; }
+.b-test { color: var(--ink); }
+
+.ps { display: grid; gap: 14px; }
+.ps-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.ps-title { display: grid; gap: 4px; }
+.ps-title strong { font-family: var(--display); font-size: 1.125rem; }
+.ps-rows { display: grid; gap: 8px; border-block: 1px solid var(--line); padding-block: 12px; }
+.ps-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+.tabs span { padding: 6px 12px; border-bottom: 2px solid transparent; color: var(--muted); }
+.tabs span.on { border-color: var(--accent); color: var(--ink); font-weight: 700; }
+.ps-split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px; }
+.panel { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.diff { display: grid; gap: 4px; font-family: var(--mono); font-size: 0.75rem; }
+.diff div { display: flex; gap: 8px; align-items: center; padding: 4px 8px; border-radius: 4px; }
+.diff .minus { background: color-mix(in srgb, var(--crit) 12%, transparent); }
+.diff .plus { background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.ask { border: 1px dashed var(--accent); border-radius: 8px; padding: 12px; display: grid; gap: 10px; }
+.btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.btns span { border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; font-size: 0.8125rem; }
+.btns span.primary { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.ps-foot { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+
+.au { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
+.alert-card { border: 1px solid var(--line); border-left: 4px solid var(--crit); border-radius: 8px; padding: 14px; display: grid; gap: 12px; }
+.alert-card .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.order { font-family: var(--mono); font-size: 0.6875rem; color: var(--muted); }
+.ev { display: grid; gap: 6px; }
+.ev div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 3rem; gap: 8px; align-items: center; }
+.cam { position: relative; aspect-ratio: 16 / 10; max-width: 100%; border-radius: 8px; background: var(--wire); overflow: hidden; }
+.cam .box { position: absolute; left: 52%; top: 30%; width: 24%; height: 38%; border: 2px dashed var(--crit); border-radius: 3px; }
+.cam .lbl { position: absolute; left: 10px; bottom: 10px; font-family: var(--mono); font-size: 0.6875rem; background: var(--surface); padding: 2px 6px; border-radius: 4px; }
+.verdicts { display: grid; gap: 8px; }
+.verdict { border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 4px; }
+.verdict .k { font-family: var(--mono); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.voice { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.flow { display: grid; grid-template-columns: repeat(4, minmax(10rem, 1fr)); gap: 12px; min-width: 44rem; }
+.screen { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 8px; align-content: start; position: relative; }
+.screen .path { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
+.screen strong { font-family: var(--display); font-size: 1rem; }
+.screen ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8125rem; display: grid; gap: 2px; }
+.screen + .screen::before { content: "→"; position: absolute; left: -11px; top: 12px; color: var(--muted); font-size: 0.875rem; }
+
+.wp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.siri { border-radius: 16px; padding: 14px; background: var(--wire); display: grid; gap: 6px; align-content: start; }
+.siri .say { font-family: var(--display); font-weight: 600; font-size: 1rem; }
+.siri .say em { font-style: normal; background: var(--mark); color: var(--mark-ink); padding: 0 4px; border-radius: 3px; }
+.gauge { height: 10px; border-radius: 5px; background: var(--wire); overflow: hidden; }
+.gauge i { display: block; height: 100%; width: 82%; background: var(--crit); }
+
+/* Process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
+.steps li { counter-increment: step; display: grid; gap: 8px; align-content: start; padding-top: 16px; border-top: 2px solid var(--ink); }
+.steps li::before { content: "Step " counter(step); font-family: var(--mono); font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+.steps h3 { font-size: var(--step-1); }
+.steps p { color: var(--muted); font-size: 0.9375rem; }
+.tools { margin-top: 28px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.about-text { display: grid; gap: 14px; max-width: 40rem; }
+.roles { display: grid; gap: 18px; }
+.role { display: grid; gap: 4px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.role b { font-family: var(--display); font-size: 1.0625rem; }
+.role span { font-size: 0.875rem; color: var(--muted); }
+.role p { font-size: 0.9375rem; }
+
+/* Contact */
+.contact { background: var(--ink); color: var(--bg); }
+.contact .wrap { padding-block: clamp(48px, 7vw, 80px); display: grid; gap: 20px; }
+.contact h2 { font-size: var(--step-3); color: var(--bg); }
+.contact p { color: color-mix(in srgb, var(--bg) 78%, var(--ink)); max-width: 36rem; }
+.contact-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.contact a { color: var(--bg); }
+.email { font-family: var(--mono); font-size: 1rem; user-select: all; padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--bg) 35%, var(--ink)); border-radius: 8px; }
+.copy {
+  font: inherit; font-size: 0.875rem; cursor: pointer;
+  background: var(--mark); color: var(--mark-ink); border: 0; border-radius: 8px; padding: 9px 14px; font-weight: 700;
+}
+.copy:focus-visible { outline-color: var(--mark); }
+.foot { font-size: 0.8125rem; color: var(--muted); padding-block: 24px; }
+
+@media (max-width: 900px) {
+  .case-body { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .evidence { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .evidence .eyebrow, .evidence .links { grid-column: 1 / -1; }
+  .index { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .au { grid-template-columns: minmax(0, 1fr); }
+  .wp { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .principles .wrap { grid-template-columns: minmax(0, 1fr); }
+  .principle { padding: 20px 0; }
+  .principle + .principle { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .ps-split { grid-template-columns: minmax(0, 1fr); }
+  .site-nav { gap: 14px; }
+}
+</style>
+
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top">Vaidehi Pandya</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Product designer · AI experiences</p>
+      <h1 style="margin-top:14px">I design AI products that <span class="hl">show their work</span>.</h1>
+      <p class="hero-lede">People trust an AI answer when they can see where it came from. I design the evidence, the confidence and the moment a human steps in, then prototype in Figma, Framer, Cursor and Claude Code until it works in the real product.</p>
+      <div class="hero-meta">
+        <span class="chip"><span class="dot" aria-hidden="true"></span>Open to new grad product design roles, starting 2027</span>
+        <span class="chip">M.S. Computer Science (Cybersecurity), GWU, May 2027</span>
+        <span class="chip">Washington, D.C.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles" aria-label="Design principles">
+    <div class="wrap">
+      <div class="principle">
+        <h2>Evidence before verdicts</h2>
+        <p>Facts decide the outcome. AI opinions are labeled as opinions and point to what they are based on.</p>
+        <span class="src">Patchsentry</span>
+      </div>
+      <div class="principle">
+        <h2>Design for the worst five minutes</h2>
+        <p>When someone is under pressure, lead with what happened, how sure we are and what to do next.</p>
+        <span class="src">AURORA · Watchpost</span>
+      </div>
+      <div class="principle">
+        <h2>Let people feel the tradeoff</h2>
+        <p>Abstract risks land when people make a choice and watch it play out, so I turn analysis into interaction.</p>
+        <span class="src">WARBREAK</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Three case studies</h2>
+      </div>
+      <div class="index">
+        <a href="#patchsentry">
+          <span class="tag">AI experience · Web</span>
+          <h3>Patchsentry</h3>
+          <p>Making AI code review something a team can trust before it merges.</p>
+        </a>
+        <a href="#aurora">
+          <span class="tag">Multimodal AI · Voice · iOS</span>
+          <h3>AURORA and Watchpost</h3>
+          <p>One alerting problem, designed twice: a hackathon dashboard, then a private, voice-first app.</p>
+        </a>
+        <a href="#warbreak">
+          <span class="tag">Interaction design · Data viz</span>
+          <h3>WARBREAK</h3>
+          <p>Turning a plan's hidden assumptions into a game you can lose, and learn from.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case study 1 -->
+  <section class="section case" id="patchsentry">
+    <div class="wrap">
+      <div class="case-head">
+        <p class="eyebrow">Case study 01 · Designing an AI-powered experience</p>
+        <h2>Patchsentry: AI review a team can trust</h2>
+        <p class="sum">A QA workspace where five AI specialists review every pull request, and real test results, not the model, decide whether it passes.</p>
+      </div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product designer and builder</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Platform</dt><dd>Web app and GitHub integration</dd></div>
+        <div><dt>Built with</dt><dd>Codex, Claude Code, Next.js</dd></div>
+      </dl>
+
+      <div class="case-body">
+        <div class="story">
+          <div>
+            <h3>The problem</h3>
+            <p>AI code reviewers sound equally confident when they are right and when they are guessing. A developer deciding whether to merge cannot tell what was actually tested from what a model assumed. Teams with private code also cannot send it to just any cloud model.</p>
+          </div>
+          <div>
+            <h3>Who it is for</h3>
+            <p>Developers and reviewers making a merge decision on a pull request, and the team leads who set up which checks and models run.</p>
+          </div>
+          <div>
+            <h3>Key decisions</h3>
+            <ul class="decisions">
+              <li><strong>Separate facts from opinions.</strong> Test results establish pass or fail. Findings from the AI team are labeled separately and can never override real test evidence.</li>
+              <li><strong>Every finding shows its source.</strong> Each one links to the code or evidence behind it, with a before-and-after diff and a suggested regression test, and every verdict is tied to the exact revision inspected.</li>
+              <li><strong>Ask instead of guessing.</strong> When a requirement is ambiguous, the review stops and asks a human to clarify.</li>
+              <li><strong>Status first, detail on demand.</strong> The review opens on a plain status ("Attention needed" or "Review complete") and a summary of checks. Tabs split detail into Behavior, Interface, Security and Boundary case.</li>
+              <li><strong>Onboarding that mirrors the job.</strong> Four steps: connect your product, build your QA team, choose a change, decide with evidence.</li>
+              <li><strong>Control over the model.</strong> Teams build their QA team from five specialists (test planner, code reviewer, security reviewer, UI/UX reviewer, bug triage), set how far each may investigate, and pick a model for each role: hosted, or local with no cloud fallback for confidential code.</li>
+              <li><strong>Honest copy.</strong> The product says plainly that no model can guarantee it finds every bug, and that coverage depends on your tests and journeys.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>How AI shaped the work</h3>
+            <p>AI is the material and the tool. I designed how model output is presented, labeled and challenged, and I built the product with Codex and Claude Code, which let me test the real review flow on real pull requests instead of static mockups.</p>
+          </div>
+          <div>
+            <h3>Accessibility and quality</h3>
+            <p>Patchsentry's own browser checks run axe-core accessibility audits on desktop and mobile viewports. The web app passed with zero violations on the pages tested.</p>
+          </div>
+        </div>
+        <aside class="evidence" aria-label="Patchsentry evidence">
+          <p class="eyebrow">Evidence</p>
+          <div class="stat"><b>5</b><span>AI specialist roles per review</span></div>
+          <div class="stat"><b>400+</b><span>hosted models to choose from, or local models</span></div>
+          <div class="stat"><b>0</b><span>axe-core violations on tested pages</span></div>
+          <div class="stat"><b>278</b><span>automated tests (244 engine, 34 web app)</span></div>
+          <div class="links">
+            <a href="https://patchsentry.vercel.app">Live product</a>
+            <a href="https://github.com/Vaidehi2510/QA-testbot">Source on GitHub</a>
+          </div>
+        </aside>
+      </div>
+
+      <figure>
+        <div class="frame">
+          <div class="wf ps" role="img" aria-label="Wireframe of the Patchsentry review workspace: a status badge, a check summary, tabs, an AI finding with a diff, and a request for human input.">
+            <div class="ps-top">
+              <div class="ps-title">
+                <strong>A smoother checkout</strong>
+                <span><span class="bar" style="width:90px"></span> · <span class="bar" style="width:60px"></span></span>
+              </div>
+              <span class="badge b-warn">● Attention needed</span>
+            </div>
+            <div class="ps-rows">
+              <div class="ps-row"><span class="badge b-test">Test result</span><span>Checks passed</span><span class="badge b-ok">Pass</span></div>
+              <div class="ps-row"><span class="badge b-test">Test result</span><span>Shipping threshold check</span><span class="badge b-crit">Fail</span></div>
+              <div class="ps-row"><span class="badge b-ai">AI finding</span><span>Accessibility: 1 issue</span><span class="badge b-warn">Review</span></div>
+            </div>
+            <div class="tabs" aria-hidden="true"><span class="on">Behavior</span><span>Interface</span><span>Security</span><span>Boundary case</span></div>
+            <div class="ps-split">
+              <div class="panel">
+                <span class="badge b-ai" style="justify-self:start">AI finding · links to code</span>
+                <span class="bar" style="width:80%"></span>
+                <div class="diff">
+                  <div class="minus">− <span class="bar" style="width:70%"></span></div>
+                  <div class="plus">+ <span class="bar" style="width:62%"></span></div>
+                </div>
+                <span style="font-size:0.8125rem;color:var(--muted)">Suggested regression test attached</span>
+              </div>
+              <div class="ask">
+                <strong>Needs a human</strong>
+                <span style="color:var(--muted)">This requirement can be read two ways. Which one did you mean?</span>
+                <div class="btns"><span class="primary">Answer</span><span>Skip</span></div>
+              </div>
+            </div>
+            <div class="ps-foot"><span>Verdict tied to commit <span class="bar" style="width:48px"></span></span><span>Evidence ready</span><span>0 source edits</span></div>
+          </div>
+        </div>
+        <figcaption><b>Wireframe</b>The review workspace. Test results and AI findings use different labels, so the verdict always comes from evidence. Example content from the product's sample review.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Case study 2 -->
+  <section class="section case" id="aurora">
+    <div class="wrap">
+      <div class="case-head">
+        <p class="eyebrow">Case study 02 · Multimodal AI, voice, iteration</p>
+        <h2>AURORA and Watchpost: one alert, designed twice</h2>
+        <p class="sum">An early-warning system for critical infrastructure, first as a hackathon web dashboard with spoken alerts, then redesigned as a private, voice-first app for iPhone, iPad and Mac.</p>
+      </div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product designer and builder</dd></div>
+        <div><dt>Context</dt><dd>DC Critical Ops Hackathon 2026, then independent</dd></div>
+        <div><dt>Platform</dt><dd>Web dashboard; iOS, iPadOS, macOS</dd></div>
+        <div><dt>Built with</dt><dd>React, FastAPI, LLMs; SwiftUI, App Intents</dd></div>
+      </dl>
+
+      <div class="case-body">
+        <div class="story">
+          <div>
+            <h3>The problem</h3>
+            <p>Network, physical security and threat intelligence teams each watch their own screen. The signals that come before an attack on a substation are often spread across all three, and nobody connects them in time.</p>
+          </div>
+          <div>
+            <h3>Who it is for</h3>
+            <p>Operators watching critical sites, who may be on the floor rather than at a desk, and who need to decide quickly whether to escalate to incident response.</p>
+          </div>
+          <div>
+            <h3>Version 1: AURORA</h3>
+            <ul class="decisions">
+              <li><strong>Lead with the decision.</strong> Alert cards open with headline, priority and confidence. Evidence, the closest historical match, the AI analyst's verdict and an escalation recommendation follow in that order.</li>
+              <li><strong>Speak when it matters.</strong> Critical alerts are read aloud. Operators can ask follow-up questions by voice and hear the answer, so their eyes and hands stay free. The target was under 60 seconds from raw signal to a spoken assessment.</li>
+              <li><strong>Show the AI what a person would see.</strong> The analyst reviews the camera frame with the anomaly boxed. In the demo, seeing the frame moved its verdict from "possible threat, 60, do not escalate" to "probable threat, 80, escalate to IR immediately."</li>
+              <li><strong>Make system state visible.</strong> Voice and AI status indicators show READY before an operator relies on them, and the dashboard keeps working in a reduced mode when the AI is unavailable.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>What I learned from the demo</h3>
+            <p>I demoed AURORA to hackathon judges and attendees and folded their feedback into the next iteration. The bigger lesson was about context: a cloud dashboard asks an operator to be at a screen and to send sensitive data to outside models.</p>
+          </div>
+          <div>
+            <h3>Version 2: Watchpost</h3>
+            <ul class="decisions">
+              <li><strong>Meet people where they already are.</strong> Three Siri shortcuts work with zero setup, using seven phrases such as "Triage VPN outage in Watchpost." Spotlight results open the exact incident, and a menu bar glance covers the Mac.</li>
+              <li><strong>Private by default.</strong> All AI runs on the device, with zero network calls.</li>
+              <li><strong>Never a dead end.</strong> On devices without Apple Intelligence, a rules engine writes the brief, so every user gets an answer.</li>
+              <li><strong>Explainable ranking.</strong> The 0–100 priority score always comes from fixed rules, even when a model writes the summary, so the same incident always ranks the same way.</li>
+              <li><strong>Built for everyone.</strong> VoiceOver labels, empty states and swipe actions across iPhone, iPad and Mac.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="evidence" aria-label="AURORA and Watchpost evidence">
+          <p class="eyebrow">Evidence</p>
+          <div class="stat"><b>&lt;60 s</b><span>raw signal to spoken alert</span></div>
+          <div class="stat"><b>60 → 80</b><span>analyst confidence once it saw the annotated frame</span></div>
+          <div class="stat"><b>20/20</b><span>anomalies caught, 0 false alarms on 80 normal frames</span></div>
+          <div class="stat"><b>7</b><span>Siri phrases across 3 zero-setup shortcuts</span></div>
+          <div class="stat"><b>0</b><span>network calls in Watchpost</span></div>
+          <div class="links">
+            <a href="https://github.com/Vaidehi2510/AURORA">AURORA on GitHub</a>
+            <a href="https://github.com/Vaidehi2510/watchpost">Watchpost on GitHub</a>
+          </div>
+        </aside>
+      </div>
+
+      <figure>
+        <div class="frame">
+          <div class="wf au" role="img" aria-label="Wireframe of an AURORA alert card next to an annotated camera frame and the analyst verdict before and after seeing it.">
+            <div class="alert-card">
+              <span class="order">1 · Decide</span>
+              <strong style="font-family:var(--display);font-size:1.0625rem">Coordinated activity at Substation Alpha</strong>
+              <div class="row"><span class="badge b-crit">CRITICAL</span><span class="badge b-test">Confidence 99.98%</span><span class="badge b-test">Substation Alpha</span></div>
+              <span class="order">2 · Evidence</span>
+              <div class="ev">
+                <div><span class="badge b-test">Network</span><span class="bar" style="width:100%"></span><span class="bar" style="width:100%"></span></div>
+                <div><span class="badge b-test">Camera</span><span class="bar" style="width:100%"></span><span class="bar" style="width:100%"></span></div>
+                <div><span class="badge b-test">Intel</span><span class="bar" style="width:100%"></span><span class="bar" style="width:100%"></span></div>
+              </div>
+              <span class="order">3 · Context</span>
+              <span>87% match to the 2015 Ukraine grid attack</span>
+              <span class="order">4 · Act</span>
+              <div class="row"><span class="badge b-ai">AI analyst: true positive, 82/100</span><span class="badge b-crit">Escalate to IR</span></div>
+              <div class="voice"><span class="badge b-ok">▶ Spoken alert</span><span class="badge b-test">Ask by voice</span></div>
+            </div>
+            <div class="verdicts">
+              <div class="cam"><span class="box"></span><span class="lbl">Anomaly boxed for the analyst</span></div>
+              <div class="verdict"><span class="k">Without the frame</span><span>Possible threat · 60 · do not escalate</span></div>
+              <div class="verdict" style="border-color:var(--crit)"><span class="k">With the frame</span><span>Probable threat · 80 · escalate to IR immediately</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption><b>Wireframe</b>AURORA's alert card, ordered decide, evidence, context, act. Values come from the project's demo scenario.</figcaption>
+      </figure>
+
+      <figure>
+        <div class="frame">
+          <div class="wf wp" role="img" aria-label="Wireframe of Watchpost: two Siri phrases and a triage brief with a priority gauge.">
+            <div class="siri"><span class="eyebrow">Siri</span><span class="say">"Triage <em>VPN outage</em> in Watchpost"</span><span style="color:var(--muted);font-size:0.8125rem">Speaks a triage brief and returns typed values to later Shortcuts steps</span></div>
+            <div class="siri"><span class="eyebrow">Siri</span><span class="say">"Show <em>critical</em> incidents in Watchpost"</span><span style="color:var(--muted);font-size:0.8125rem">Filters by severity without opening the app</span></div>
+            <div class="panel">
+              <span class="eyebrow">Triage brief · on device</span>
+              <div class="gauge" aria-hidden="true"><i></i></div>
+              <span style="font-size:0.8125rem;color:var(--muted)">Priority from fixed rules; summary from the on-device model, or rules when it is unavailable</span>
+              <span class="bar" style="width:90%"></span><span class="bar" style="width:70%"></span>
+            </div>
+          </div>
+        </div>
+        <figcaption><b>Wireframe</b>Watchpost moves the same job into Siri, Shortcuts and Spotlight. The highlighted words are parameters people can change.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Case study 3 -->
+  <section class="section case" id="warbreak">
+    <div class="wrap">
+      <div class="case-head">
+        <p class="eyebrow">Case study 03 · Interaction design for complex analysis</p>
+        <h2>WARBREAK: the game is the interface</h2>
+        <p class="sum">An AI planning tool that finds the hidden assumptions in a plan, then lets you play it out against an adversary that attacks the weakest one.</p>
+      </div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product designer and builder</dd></div>
+        <div><dt>Context</dt><dd>SCSP AI+ Expo 2026, Wargaming Track</dd></div>
+        <div><dt>Platform</dt><dd>Web</dd></div>
+        <div><dt>Built with</dt><dd>Next.js, Leaflet, FastAPI, Gemini</dd></div>
+      </dl>
+
+      <div class="case-body">
+        <div class="story">
+          <div>
+            <h3>The problem</h3>
+            <p>Plans fail on assumptions nobody wrote down. A report listing those assumptions is easy to skim and forget. I wanted people to feel which assumption breaks first.</p>
+          </div>
+          <div>
+            <h3>The flow</h3>
+            <p>Write or pick a plan in plain English. AI pulls out its hidden assumptions and scores each one 0–100 for fragility. Choose assets under a budget, play turns on a live map, then read an autopsy of what failed and why.</p>
+          </div>
+          <div>
+            <h3>Key decisions</h3>
+            <ul class="decisions">
+              <li><strong>Budgets create real choices.</strong> Twelve assets compete for a fixed budget, and the number of turns equals the number of assets you pick, so every choice costs something.</li>
+              <li><strong>Show consequences beyond the obvious score.</strong> Six live metrics track public opinion, domestic and allied support and force strength, so a move that wins on the map can still lose overall.</li>
+              <li><strong>Make the map talk.</strong> Strikes, sonar rings, cyber pulses and ground movement animate on the map, so each move has visible feedback.</li>
+              <li><strong>Explain the loss.</strong> A seven-tab Failure Autopsy covers the assumption chain, the decision log, the adversary's reasoning on each turn, the failure chain, a what-if comparison of your timeline with a better one, and recommendations.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="evidence" aria-label="WARBREAK evidence">
+          <p class="eyebrow">Evidence</p>
+          <div class="stat"><b>0–100</b><span>fragility score for each hidden assumption</span></div>
+          <div class="stat"><b>12</b><span>budget-limited assets</span></div>
+          <div class="stat"><b>6</b><span>live metrics beyond the map</span></div>
+          <div class="stat"><b>7</b><span>tabs in the Failure Autopsy</span></div>
+          <div class="links">
+            <a href="https://github.com/Vaidehi2510/WARBREAK">Source on GitHub</a>
+          </div>
+        </aside>
+      </div>
+
+      <figure>
+        <div class="frame">
+          <div class="wf flow" role="img" aria-label="User flow across four screens: plan, assets, wargame and autopsy.">
+            <div class="screen"><span class="path">/</span><strong>Plan</strong><ul><li>Pick a scenario or write a plan</li><li>AI extracts assumptions</li><li>Fragility scores 0–100</li></ul></div>
+            <div class="screen"><span class="path">/assets</span><strong>Assets</strong><ul><li>12 assets, one budget</li><li>Opponent briefing with confidence levels</li><li>Turns = assets chosen</li></ul></div>
+            <div class="screen"><span class="path">/game</span><strong>Wargame</strong><ul><li>Animated live map</li><li>Adversary targets the weakest assumption</li><li>6 live metrics</li></ul></div>
+            <div class="screen"><span class="path">/autopsy</span><strong>Autopsy</strong><ul><li>Assumption chain</li><li>Decision log</li><li>Adversary reasoning</li><li>Metrics verdict</li><li>Failure chain</li><li>What-if timelines</li><li>Recommendations</li></ul></div>
+          </div>
+        </div>
+        <figcaption><b>Flow</b>Four screens, from a plain-English plan to an explanation of why it failed.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section case" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How I work</p>
+        <h2>AI is part of every step</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Start with the person</h3><p>Talk to the people with the problem and write down what they need. At OpenTeams I turned a user's migration needs into a gap analysis of what was supported, partial and missing.</p></li>
+        <li><h3>Sketch the flow</h3><p>Map the journey and the key screens in Figma, and decide what each screen must answer first.</p></li>
+        <li><h3>Prototype for real</h3><p>Build a working version with Claude Code, Codex or Cursor, so people react to real behavior and real data instead of static frames.</p></li>
+        <li><h3>Test and refine</h3><p>Put it in front of people, run accessibility audits on desktop and mobile, and change what the evidence says to change.</p></li>
+      </ol>
+      <div class="tools" aria-label="Tools">
+        <span class="chip">Figma</span><span class="chip">Framer</span><span class="chip">Webflow</span><span class="chip">Cursor</span><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">React and Next.js</span><span class="chip">SwiftUI</span><span class="chip">Playwright and axe-core</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section case" id="about">
+    <div class="wrap about">
+      <div class="about-text">
+        <p class="eyebrow">About</p>
+        <h2 style="font-size:var(--step-3)">Designer with a security mind</h2>
+        <p>I'm finishing an M.S. in Computer Science with a focus on cybersecurity at The George Washington University, graduating in May 2027. Before that I earned a B.Tech in Electronics and Communication.</p>
+        <p>Security taught me to ask what happens when things go wrong, and who gets hurt. That question drives how I design AI: show the evidence, be honest about confidence, and give people a clear way to step in.</p>
+        <p>I've worked close to users. As a support engineer I helped more than 15 enterprise customers through their hardest escalations and learned to explain complex failures in plain language.</p>
+      </div>
+      <div class="roles">
+        <div class="role"><b>OpenTeams AI</b><span>Product Intern, Security · May–Aug 2026</span><p>Scoped a user's move from another AI assistant and recommended a planned migration over a one-click importer that could not preserve behavior. Held an irreversible auto-correct until the affected list was verified. Worked daily with product, design, engineering and PM.</p></div>
+        <div class="role"><b>Dev IT</b><span>Technical Support Engineer · 2024–2025</span><p>Supported 15+ enterprise customers and turned recurring issues into runbooks and knowledge-base articles that cut handle time.</p></div>
+        <div class="role"><b>EPI-USE India</b><span>Technical Consultant · 2021–2023</span><p>Automated release workflows, cutting release time 30%.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p>I'm looking for a new grad product design role starting in 2027, on a team designing AI into products people use every day.</p>
+    <div class="contact-row">
+      <span class="email" id="email">vaidehi.pandya@gwu.edu</span>
+      <button class="copy" id="copy-email" type="button">Copy email</button>
+    </div>
+    <div class="contact-row">
+      <a href="https://www.linkedin.com/in/vaidehi-pandya/">LinkedIn</a>
+      <a href="https://github.com/Vaidehi2510">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer class="wrap foot">Built with Claude. Wireframes recreate screens from each project.</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy-email");
+  var email = document.getElementById("email");
+  if (!btn || !email) return;
+  btn.addEventListener("click", function () {
+    var text = email.textContent.trim();
+    function selectIt() {
+      var r = document.createRange();
+      r.selectNodeContents(email);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      btn.textContent = "Press Ctrl+C to copy";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy email"; }, 2000);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>
+</body>
+</html>
