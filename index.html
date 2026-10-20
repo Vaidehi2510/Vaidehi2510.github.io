@@ -1,710 +1,347 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light" data-motion="off">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vaidehi Pandya</title>
-<meta name="description" content="Vaidehi Pandya designs AI products that show their work. Case studies: Patchsentry, AURORA and Watchpost, WARBREAK.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: one reading column with an evidence margin. Every case study pairs the story with the numbers and links that back it up, the way a good AI finding cites its source. */
-:root {
-  --bg: #F2F5F6;
-  --surface: #FFFFFF;
-  --ink: #13202A;
-  --muted: #4E5E69;
-  --line: #D3DCE0;
-  --accent: #0A6670;
-  --mark: #F4C95D;
-  --mark-ink: #13202A;
-  --ok: #1D7447;
-  --warn: #9A5600;
-  --crit: #B3261E;
-  --wire: #E6ECEE;
-  --hl: #F4C95D;
-
-  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-
-  --step-0: 1.0625rem;
-  --step-1: 1.25rem;
-  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
-  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
-  --step-4: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
-  --small: 0.875rem;
-  --radius: 10px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0D1418; --surface: #141E24; --ink: #E3EBEE; --muted: #9DADB5; --line: #26343C;
-    --accent: #62C3CC; --mark: #D9AE45; --mark-ink: #0D1418; --ok: #5DC08A; --warn: #E2A24C; --crit: #F07B73; --wire: #1C2830; --hl: rgba(217, 174, 69, 0.42);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0D1418; --surface: #141E24; --ink: #E3EBEE; --muted: #9DADB5; --line: #26343C;
-  --accent: #62C3CC; --mark: #D9AE45; --mark-ink: #0D1418; --ok: #5DC08A; --warn: #E2A24C; --crit: #F07B73; --wire: #1C2830; --hl: rgba(217, 174, 69, 0.42);
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: var(--step-0);
-  line-height: 1.6;
-}
-a { color: var(--accent); text-underline-offset: 3px; }
-a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
-p { margin: 0; }
-
-.wrap {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-.eyebrow {
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* Header */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
-.site-head {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
-}
-.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
-.brand { font-family: var(--display); font-weight: 700; font-size: 1.125rem; color: var(--ink); text-decoration: none; }
-.site-nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9375rem; }
-.site-nav a { color: var(--ink); text-decoration: none; }
-.site-nav a:hover { color: var(--accent); }
-
-/* Hero */
-.hero { padding-block: clamp(48px, 8vw, 96px) clamp(40px, 6vw, 72px); }
-.hero h1 { font-size: var(--step-4); font-weight: 750; max-width: 15ch; }
-.hl { background: linear-gradient(transparent 58%, var(--hl) 58%, var(--hl) 92%, transparent 92%); color: inherit; padding: 0 0.06em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.hero-lede { margin-top: 24px; max-width: 40rem; font-size: var(--step-1); color: var(--muted); }
-.hero-meta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
-.chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
-  font-size: 0.875rem; background: var(--surface); color: var(--ink);
-}
-.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
-
-/* Principles */
-.principles { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.principles .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
-.principle { padding: 28px 24px 28px 0; display: grid; gap: 8px; }
-.principle + .principle { border-left: 1px solid var(--line); padding-left: 24px; }
-.principle h2 { font-size: var(--step-1); font-weight: 700; }
-.principle p { color: var(--muted); font-size: 0.9375rem; }
-.principle .src { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
-
-/* Work index */
-.section { padding-block: clamp(56px, 8vw, 96px); }
-.section-head { display: grid; gap: 10px; margin-bottom: 32px; }
-.section-head h2 { font-size: var(--step-3); font-weight: 750; }
-.index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.index a {
-  display: grid; gap: 10px; align-content: start;
-  padding: 20px; border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--surface); color: var(--ink); text-decoration: none;
-  transition: border-color 0.15s ease, transform 0.15s ease;
-}
-.index a:hover { border-color: var(--accent); transform: translateY(-2px); }
-@media (prefers-reduced-motion: reduce) { .index a, .index a:hover { transition: none; transform: none; } }
-.index h3 { font-size: var(--step-1); }
-.index p { color: var(--muted); font-size: 0.9375rem; }
-.index .tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
-
-/* Case study */
-.case { border-top: 1px solid var(--line); }
-.case-head { display: grid; gap: 14px; max-width: 48rem; }
-.case-head h2 { font-size: var(--step-3); font-weight: 750; }
-.case-head .sum { font-size: var(--step-1); color: var(--muted); }
-.meta {
-  margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 16px;
-}
-.meta div { display: grid; gap: 2px; min-width: 0; }
-.meta dt { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-.meta dd { margin: 0; font-size: 0.9375rem; }
-.case-body { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 48px; align-items: start; }
-.story { display: grid; gap: 32px; max-width: 42rem; min-width: 0; }
-.story h3 { font-size: var(--step-2); font-weight: 700; margin-bottom: 10px; }
-.story p + p { margin-top: 12px; }
-.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
-.decisions li { display: grid; gap: 4px; padding-left: 18px; border-left: 2px solid var(--line); }
-.decisions strong { font-weight: 700; }
-
-.evidence {
-  position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px);
-  display: grid; gap: 18px; padding: 20px;
-  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
-  min-width: 0;
-}
-.evidence .eyebrow { color: var(--accent); }
-.stat { display: grid; gap: 2px; }
-.stat b { font-family: var(--display); font-size: 1.75rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.stat span { font-size: 0.875rem; color: var(--muted); }
-.evidence .links { display: grid; gap: 6px; font-size: 0.9375rem; border-top: 1px solid var(--line); padding-top: 14px; }
-
-/* Wireframes */
-figure { margin: 48px 0 0; }
-figcaption { margin-top: 12px; font-size: var(--small); color: var(--muted); max-width: 48rem; }
-figcaption b { font-family: var(--mono); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-right: 6px; }
-.frame {
-  border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
-  padding: clamp(14px, 3vw, 28px); overflow-x: auto;
-}
-.wf { font-size: 0.875rem; color: var(--ink); min-width: 0; }
-.bar { display: inline-block; height: 9px; border-radius: 5px; background: var(--wire); vertical-align: middle; }
-.badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 0.75rem; border-radius: 6px; padding: 3px 8px; border: 1px solid currentColor; white-space: nowrap; }
-.b-warn { color: var(--warn); }
-.b-ok { color: var(--ok); }
-.b-crit { color: var(--crit); }
-.b-ai { color: var(--accent); border-style: dashed; }
-.b-test { color: var(--ink); }
-
-.ps { display: grid; gap: 14px; }
-.ps-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
-.ps-title { display: grid; gap: 4px; }
-.ps-title strong { font-family: var(--display); font-size: 1.125rem; }
-.ps-rows { display: grid; gap: 8px; border-block: 1px solid var(--line); padding-block: 12px; }
-.ps-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
-.tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
-.tabs span { padding: 6px 12px; border-bottom: 2px solid transparent; color: var(--muted); }
-.tabs span.on { border-color: var(--accent); color: var(--ink); font-weight: 700; }
-.ps-split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px; }
-.panel { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.diff { display: grid; gap: 4px; font-family: var(--mono); font-size: 0.75rem; }
-.diff div { display: flex; gap: 8px; align-items: center; padding: 4px 8px; border-radius: 4px; }
-.diff .minus { background: color-mix(in srgb, var(--crit) 12%, transparent); }
-.diff .plus { background: color-mix(in srgb, var(--ok) 14%, transparent); }
-.ask { border: 1px dashed var(--accent); border-radius: 8px; padding: 12px; display: grid; gap: 10px; }
-.btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.btns span { border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; font-size: 0.8125rem; }
-.btns span.primary { background: var(--accent); color: var(--surface); border-color: var(--accent); }
-.ps-foot { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
-
-.au { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
-.alert-card { border: 1px solid var(--line); border-left: 4px solid var(--crit); border-radius: 8px; padding: 14px; display: grid; gap: 12px; }
-.alert-card .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.order { font-family: var(--mono); font-size: 0.6875rem; color: var(--muted); }
-.ev { display: grid; gap: 6px; }
-.ev div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 3rem; gap: 8px; align-items: center; }
-.cam { position: relative; aspect-ratio: 16 / 10; max-width: 100%; border-radius: 8px; background: var(--wire); overflow: hidden; }
-.cam .box { position: absolute; left: 52%; top: 30%; width: 24%; height: 38%; border: 2px dashed var(--crit); border-radius: 3px; }
-.cam .lbl { position: absolute; left: 10px; bottom: 10px; font-family: var(--mono); font-size: 0.6875rem; background: var(--surface); padding: 2px 6px; border-radius: 4px; }
-.verdicts { display: grid; gap: 8px; }
-.verdict { border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 4px; }
-.verdict .k { font-family: var(--mono); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-.voice { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.flow { display: grid; grid-template-columns: repeat(4, minmax(10rem, 1fr)); gap: 12px; min-width: 44rem; }
-.screen { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 8px; align-content: start; position: relative; }
-.screen .path { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
-.screen strong { font-family: var(--display); font-size: 1rem; }
-.screen ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8125rem; display: grid; gap: 2px; }
-.screen + .screen::before { content: "→"; position: absolute; left: -11px; top: 12px; color: var(--muted); font-size: 0.875rem; }
-
-.wp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.siri { border-radius: 16px; padding: 14px; background: var(--wire); display: grid; gap: 6px; align-content: start; }
-.siri .say { font-family: var(--display); font-weight: 600; font-size: 1rem; }
-.siri .say em { font-style: normal; background: var(--mark); color: var(--mark-ink); padding: 0 4px; border-radius: 3px; }
-.gauge { height: 10px; border-radius: 5px; background: var(--wire); overflow: hidden; }
-.gauge i { display: block; height: 100%; width: 82%; background: var(--crit); }
-
-/* Process */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
-.steps li { counter-increment: step; display: grid; gap: 8px; align-content: start; padding-top: 16px; border-top: 2px solid var(--ink); }
-.steps li::before { content: "Step " counter(step); font-family: var(--mono); font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
-.steps h3 { font-size: var(--step-1); }
-.steps p { color: var(--muted); font-size: 0.9375rem; }
-.tools { margin-top: 28px; display: flex; gap: 8px; flex-wrap: wrap; }
-
-/* About */
-.about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: start; }
-.about-text { display: grid; gap: 14px; max-width: 40rem; }
-.roles { display: grid; gap: 18px; }
-.role { display: grid; gap: 4px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-.role b { font-family: var(--display); font-size: 1.0625rem; }
-.role span { font-size: 0.875rem; color: var(--muted); }
-.role p { font-size: 0.9375rem; }
-
-/* Contact */
-.contact { background: var(--ink); color: var(--bg); }
-.contact .wrap { padding-block: clamp(48px, 7vw, 80px); display: grid; gap: 20px; }
-.contact h2 { font-size: var(--step-3); color: var(--bg); }
-.contact p { color: color-mix(in srgb, var(--bg) 78%, var(--ink)); max-width: 36rem; }
-.contact-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-.contact a { color: var(--bg); }
-.email { font-family: var(--mono); font-size: 1rem; user-select: all; padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--bg) 35%, var(--ink)); border-radius: 8px; }
-.copy {
-  font: inherit; font-size: 0.875rem; cursor: pointer;
-  background: var(--mark); color: var(--mark-ink); border: 0; border-radius: 8px; padding: 9px 14px; font-weight: 700;
-}
-.copy:focus-visible { outline-color: var(--mark); }
-.foot { font-size: 0.8125rem; color: var(--muted); padding-block: 24px; }
-
-@media (max-width: 900px) {
-  .case-body { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .evidence { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .evidence .eyebrow, .evidence .links { grid-column: 1 / -1; }
-  .index { grid-template-columns: minmax(0, 1fr); }
-  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .about { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .au { grid-template-columns: minmax(0, 1fr); }
-  .wp { grid-template-columns: minmax(0, 1fr); }
-}
-@media (max-width: 640px) {
-  .principles .wrap { grid-template-columns: minmax(0, 1fr); }
-  .principle { padding: 20px 0; }
-  .principle + .principle { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
-  .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .steps { grid-template-columns: minmax(0, 1fr); }
-  .ps-split { grid-template-columns: minmax(0, 1fr); }
-  .site-nav { gap: 14px; }
-}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>Vaidehi Pandya — Product Designer & Builder</title>
+  <meta name="description" content="I turn complex AI systems into experiences people can understand, trust, and use. Explore product design work by Vaidehi Pandya.">
+  <link rel="canonical" href="https://vaidehi2510.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vaidehi Pandya — Complexity, made human.">
+  <meta property="og:description" content="Product designer and builder. Thoughtful interfaces for AI, critical decisions, and everything in between.">
+  <meta property="og:url" content="https://vaidehi2510.github.io/">
+  <meta property="og:image" content="https://vaidehi2510.github.io/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vaidehi Pandya. Product designer and builder. Complexity, made human.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Person","name":"Vaidehi Pandya","url":"https://vaidehi2510.github.io/","description":"Product designer and builder creating understandable, trustworthy AI experiences.","sameAs":["https://www.linkedin.com/in/vaidehi-pandya/","https://github.com/Vaidehi2510"]}
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try {
+      var theme = localStorage.getItem('vp-theme');
+      var motion = localStorage.getItem('vp-motion');
+      document.documentElement.dataset.theme = theme === 'dark' || theme === 'light' ? theme : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.motion = motion === 'off' || motion === 'on' ? motion : (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'off' : 'on');
+    } catch (e) {
+      document.documentElement.dataset.motion = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'off' : 'on';
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="#top">Vaidehi Pandya</a>
-    <nav class="site-nav" aria-label="Sections">
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="reading-progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top" aria-label="Vaidehi Pandya, home">vaidehi<span>.</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#work" data-nav>Work</a>
+        <a href="#approach" data-nav>Approach</a>
+        <a href="#about" data-nav>About</a>
+      </nav>
+      <div class="header-actions">
+        <button id="motion-toggle" class="utility requires-js" type="button" aria-label="Pause animations" aria-pressed="false" hidden><span class="motion-icon" aria-hidden="true">Ⅱ</span><span data-motion-label>Motion on</span></button>
+        <button id="theme-toggle" class="theme-toggle requires-js" type="button" aria-label="Switch to dark theme" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.6A8.6 8.6 0 0 1 8.4 3.7a8.6 8.6 0 1 0 11.9 11.9Z"/></svg><span class="sr-only" data-theme-label>Dark</span></button>
+        <a class="header-contact" href="#contact" data-nav>Let’s talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✳</span> Product designer & builder</p>
+        <h1 id="hero-heading">Complexity,<br>made <em>human.</em></h1>
+        <p class="hero-intro">Hi, I’m Vaidehi. I turn complex AI systems into experiences people can <strong>understand, trust, and use.</strong></p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+          <a class="text-link" href="#about">A little about me <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="availability"><span class="status-dot" aria-hidden="true"></span><span>Open to new grad roles · 2027</span><span class="availability-location">Washington, D.C.</span></div>
+      </div>
+      <div class="hero-lab" id="design-demo" data-mode="evidence">
+        <div class="lab-topline"><span class="mono">THE CLARITY LAB</span><span class="lab-coordinate mono" aria-hidden="true">01 / 03</span></div>
+        <div class="lab-spark" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M50 0 59 29 79 10 72 38 100 36 78 53 96 74 67 70 66 100 49 76 28 96 32 67 2 66 26 48 5 28 34 32Z"/></svg></div>
+        <div class="lab-orbit" aria-hidden="true"></div>
+        <div class="demo-window">
+          <div class="window-chrome"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>From noise to a clear next step</span><span aria-hidden="true">↗</span></div>
+          <div class="demo-tabs requires-js" role="tablist" aria-label="Explore my design principles" hidden>
+            <button class="demo-tab" id="tab-evidence" type="button" role="tab" aria-selected="true" aria-controls="demo-evidence" data-target="demo-evidence" tabindex="0">01 Evidence</button>
+            <button class="demo-tab" id="tab-context" type="button" role="tab" aria-selected="false" aria-controls="demo-context" data-target="demo-context" tabindex="-1">02 Context</button>
+            <button class="demo-tab" id="tab-action" type="button" role="tab" aria-selected="false" aria-controls="demo-action" data-target="demo-action" tabindex="-1">03 Action</button>
+          </div>
+          <div class="demo-content">
+            <div id="demo-evidence" role="tabpanel" aria-labelledby="tab-evidence" tabindex="0">
+              <span class="demo-kicker">MAKE IT EXPLAINABLE</span>
+              <h2>Source, before certainty.</h2>
+              <p>A confident answer isn’t enough. Show people what it’s based on.</p>
+              <div class="signal-list">
+                <div><span class="signal-icon icon-green" aria-hidden="true">✓</span><span>Test result</span><span class="signal-tag">Verified</span></div>
+                <div><span class="signal-icon icon-purple" aria-hidden="true">✳</span><span>AI finding</span><span class="signal-tag">Needs review</span></div>
+                <div><span class="signal-icon icon-orange" aria-hidden="true">↗</span><span>Human decision</span><span class="signal-tag">Yours to make</span></div>
+              </div>
+            </div>
+            <div id="demo-context" role="tabpanel" aria-labelledby="tab-context" tabindex="0" hidden>
+              <span class="demo-kicker">MAKE IT MEANINGFUL</span>
+              <h2>A signal needs a story.</h2>
+              <p>Connect the dots so people see what matters, and why.</p>
+              <div class="context-sources"><span>Network</span><span>Camera</span><span>Intel</span></div>
+              <div class="context-connector" aria-hidden="true">↓ &nbsp; ↓ &nbsp; ↓</div>
+              <div class="context-result"><span class="signal-icon icon-orange" aria-hidden="true">!</span><span><strong>One incident. A fuller picture.</strong><small>Related evidence, together.</small></span></div>
+            </div>
+            <div id="demo-action" role="tabpanel" aria-labelledby="tab-action" tabindex="0" hidden>
+              <span class="demo-kicker">MAKE IT ACTIONABLE</span>
+              <h2>Give people the controls.</h2>
+              <p>A useful interface makes the next move clear, without making it for you.</p>
+              <div class="action-path"><span class="action-check" aria-hidden="true">✓</span><div><strong>Evidence reviewed</strong><small>You have the context.</small></div></div>
+              <div class="action-choice"><span>Ready for your decision</span><span aria-hidden="true">↗</span></div>
+              <span class="action-footnote">Human judgment stays in the loop.</span>
+            </div>
+          </div>
+          <div class="demo-bottom"><span class="status-dot" aria-hidden="true"></span> An interactive design sketch</div>
+        </div>
+        <span class="lab-note" aria-hidden="true">a little of how I think <svg viewBox="0 0 64 34"><path d="M2 29C20 35 47 23 51 5M42 9l10-6 6 11"/></svg></span>
+      </div>
+      <div class="hero-bottom"><span class="mono">GOOD DESIGN MAKES ROOM FOR PEOPLE.</span><a href="#work" class="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <section class="work-section section-pad" id="work" aria-labelledby="work-heading">
+      <div class="wrap">
+        <div class="section-heading reveal"><div><p class="eyebrow">01 / Selected work</p><h2 id="work-heading">Thought through.<br><span class="muted-heading">Built for real.</span></h2></div><p>Three explorations in making complex decisions feel a little more human.</p></div>
+        <article class="project project-patch reveal">
+          <a class="project-visual patch-visual" href="#patchsentry" data-case-link aria-label="Read the Patchsentry case study">
+            <div class="visual-topline"><span>PATCHSENTRY / PRODUCT DESIGN</span><span aria-hidden="true">01</span></div>
+            <div class="patch-app" aria-hidden="true">
+              <div class="app-sidebar"><span class="app-logo">p<span>·</span></span><span class="sidebar-icon selected">▦</span><span class="sidebar-icon">◎</span><span class="sidebar-icon">⌘</span><span class="sidebar-bottom">VP</span></div>
+              <div class="app-main">
+                <div class="app-breadcrumb">Workspace <span>/</span> Pull request #42 <span class="app-avatar">VP</span></div>
+                <div class="app-title"><div><small>REVIEW OVERVIEW</small><strong>A smoother checkout</strong></div><span class="attention-badge">● Needs attention</span></div>
+                <div class="app-stats"><div><span>Checks passed</span><strong>12<span> / 13</span></strong></div><div><span>AI findings</span><strong>03</strong></div><div><span>Human input</span><strong>01</strong></div></div>
+                <div class="app-tabs"><span class="active">Overview</span><span>Findings</span><span>Evidence</span></div>
+                <div class="app-finding"><span class="finding-symbol">✓</span><div><strong>Checkout flow</strong><small>Evidence verified · 12 checks passed</small></div><span class="pass-badge">PASS</span></div>
+                <div class="app-finding"><span class="finding-symbol warn">!</span><div><strong>Shipping threshold</strong><small>Boundary case needs a closer look</small></div><span class="review-badge">REVIEW</span></div>
+                <div class="app-ai-note"><span>✳</span><div><strong>AI proposes. Evidence decides.</strong><small>Every finding links back to its source.</small></div><span>↗</span></div>
+              </div>
+            </div>
+            <div class="floating-note patch-note" aria-hidden="true"><span>↳</span> Trust is a design decision.</div>
+            <span class="visual-caption">Interface study · illustrative review data</span>
+            <span class="project-open" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info"><div><div class="project-tags"><span>AI experiences</span><span>Web app</span><span>2026</span></div><h3><a href="#patchsentry" data-case-link>Patchsentry</a></h3><p>Helping developers trust the review before they trust the merge.</p></div><a class="case-link" href="#patchsentry" data-case-link>Explore the case study <span aria-hidden="true">↗</span></a></div>
+          <div class="project-takeaway"><span class="mono">THE DESIGN QUESTION</span><p>How do you make the difference between an AI opinion and a verified fact impossible to miss?</p></div>
+        </article>
+
+        <div class="project-pair">
+          <article class="project project-aurora reveal">
+            <a class="project-visual aurora-visual" href="#aurora" data-case-link aria-label="Read the AURORA and Watchpost case study">
+              <div class="visual-topline"><span>AURORA + WATCHPOST</span><span aria-hidden="true">02</span></div>
+              <div class="radar-grid" aria-hidden="true"><span class="radar-ring ring-one"></span><span class="radar-ring ring-two"></span><span class="radar-ring ring-three"></span><span class="radar-line"></span><i class="radar-dot dot-one"></i><i class="radar-dot dot-two"></i><i class="radar-dot dot-three"></i></div>
+              <div class="alert-preview" aria-hidden="true"><div class="alert-preview-top"><span class="alert-mark">↗</span><span>WATCHPOST</span><span class="alert-live">ON DEVICE</span></div><span class="alert-overline">YOUR ATTENTION, WHERE IT MATTERS</span><strong>One signal.<br>The whole story.</strong><div class="alert-separator"></div><div class="alert-incident"><span class="incident-dot"></span><div><b>Substation Alpha</b><small>Three connected signals · priority high</small></div><span>↗</span></div><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>Ready when you are.</span></div></div>
+              <span class="visual-caption">Interface concept · dashboard to voice</span><span class="project-open" aria-hidden="true">↗</span>
+            </a>
+            <div class="project-info"><div><div class="project-tags"><span>Multimodal AI</span><span>Voice & iOS</span></div><h3><a href="#aurora" data-case-link>AURORA & Watchpost</a></h3><p>Less noise. More context. A clearer next move when the stakes are high.</p></div><a class="case-link" href="#aurora" data-case-link>Explore the case study <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="project project-warbreak reveal">
+            <a class="project-visual warbreak-visual" href="#warbreak" data-case-link aria-label="Read the WARBREAK case study">
+              <div class="visual-topline"><span>WARBREAK / INTERACTION DESIGN</span><span aria-hidden="true">03</span></div>
+              <div class="strategy-board" aria-hidden="true"><div class="board-topline"><span class="board-logo">W<span>↗</span></span><span>SCENARIO 01</span><span class="board-turn">TURN 03 / 06</span></div><svg class="strategy-map" viewBox="0 0 400 200" fill="none"><path class="map-contour" d="M-10 35 42 18 75 38 111 17 157 30 172 61 211 78 242 44 285 30 316 47 355 31 408 45M-8 75 43 59 77 78 114 55 148 69 165 100 205 115 249 86 285 69 319 82 363 72 408 86M-10 114 43 99 77 119 113 96 147 110 166 140 207 153 249 125 286 109 323 125 364 110 411 124M-9 151 42 139 78 158 112 138 148 149 170 182 206 193 250 166 286 148 320 164 366 151 409 164"/><path class="map-route" d="M77 78 166 140 285 69 355 31"/><circle cx="77" cy="78" r="17" class="map-target"/><circle cx="77" cy="78" r="5" class="map-node"/><circle cx="166" cy="140" r="6" class="map-node"/><circle cx="285" cy="69" r="6" class="map-node"/><circle cx="355" cy="31" r="6" class="map-end"/><text x="57" y="111">YOUR PLAN</text><text x="265" y="102">ASSUMPTION</text></svg><div class="board-risk"><span>ASSUMPTION FRAGILITY</span><strong>74<span>/100</span></strong></div><div class="risk-bar"><span></span></div><div class="board-footer"><span>Every choice has a consequence.</span><span>↗</span></div></div>
+              <div class="floating-note warbreak-note" aria-hidden="true">What if the plan is wrong?</div>
+              <span class="visual-caption">Interface concept · illustrative scenario</span><span class="project-open" aria-hidden="true">↗</span>
+            </a>
+            <div class="project-info"><div><div class="project-tags"><span>Interaction design</span><span>Data storytelling</span></div><h3><a href="#warbreak" data-case-link>WARBREAK</a></h3><p>Turning hidden assumptions into choices you can play, feel, and learn from.</p></div><a class="case-link" href="#warbreak" data-case-link>Explore the case study <span aria-hidden="true">↗</span></a></div>
+          </article>
+        </div>
+        <div class="case-studies" aria-labelledby="case-studies-heading"><div class="case-studies-heading"><h3 id="case-studies-heading">Behind the decisions</h3><p>The problem, the choices, and what I learned.</p></div>
+          <details class="case-study" id="patchsentry">
+  <summary class="case-summary">
+    <span class="case-number">01</span>
+    <span class="case-summary-title">Patchsentry</span>
+    <span class="case-summary-note">Trust, evidence &amp; the human in the loop</span>
+    <span class="case-toggle" aria-hidden="true">+</span>
+  </summary>
+  <div class="case-detail">
+    <p class="case-overview">A QA workspace that helps developers decide whether to merge. Five AI specialists investigate a pull request; real test results determine its pass or fail status.</p>
+    <dl class="case-facts">
+      <div><dt>My role</dt><dd>Product designer &amp; builder</dd></div>
+      <div><dt>Context</dt><dd>2026 · AI developer tools</dd></div>
+      <div><dt>Platform</dt><dd>Web app &amp; GitHub integration</dd></div>
+    </dl>
+    <div class="case-story-grid">
+      <section class="story-block">
+        <h3>The problem</h3>
+        <p>An AI reviewer can sound confident whether it has evidence or is guessing. Developers need to know what was tested, what was inferred, and what needs their judgment before they merge.</p>
+        <p>Team leads also need control over the models that can access private code.</p>
+      </section>
+      <section class="story-block">
+        <h3>Make the evidence readable</h3>
+        <ol>
+          <li><strong>Separate test results from AI findings.</strong> Model opinions cannot override a failing test.</li>
+          <li><strong>Show where a finding came from.</strong> Link to code, a before-and-after diff, and a suggested regression test. Tie every verdict to the exact revision reviewed.</li>
+          <li><strong>Reveal detail when it is useful.</strong> Start with a clear status and check summary; organize deeper findings into Behavior, Interface, Security, and Boundary case.</li>
+        </ol>
+      </section>
+      <section class="story-block">
+        <h3>Keep people in control</h3>
+        <p>When requirements are ambiguous, the review asks a person to clarify. Teams choose a model and investigation limits for each specialist, including local models with no cloud fallback for confidential code.</p>
+        <p>The four-step onboarding follows the actual job: connect a product, build a QA team, choose a change, and decide with evidence.</p>
+      </section>
+      <section class="story-block">
+        <h3>Build the behavior, then check it</h3>
+        <p>I used Codex and Claude Code to build the review flow and try it on real pull requests. That made the labels, evidence, and requests for human input part of a working product.</p>
+        <p>The project includes 278 automated tests. Its axe-core checks found zero accessibility violations on the desktop and mobile pages tested.</p>
+      </section>
+    </div>
+    <div class="case-evidence" aria-label="Patchsentry project evidence">
+      <div class="evidence-item"><strong>5</strong><span>AI specialist roles</span></div>
+      <div class="evidence-item"><strong>278</strong><span>automated tests</span></div>
+      <div class="evidence-item"><strong>0</strong><span>axe-core violations on tested pages</span></div>
+      <div class="evidence-item"><strong>4</strong><span>steps from setup to review</span></div>
+    </div>
+    <div class="case-actions">
+      <a href="https://patchsentry.vercel.app">Explore the live product <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/Vaidehi2510/QA-testbot">View the source <span aria-hidden="true">↗</span></a>
+    </div>
   </div>
-</header>
+</details>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Product designer · AI experiences</p>
-      <h1 style="margin-top:14px">I design AI products that <span class="hl">show their work</span>.</h1>
-      <p class="hero-lede">People trust an AI answer when they can see where it came from. I design the evidence, the confidence and the moment a human steps in, then prototype in Figma, Framer, Cursor and Claude Code until it works in the real product.</p>
-      <div class="hero-meta">
-        <span class="chip"><span class="dot" aria-hidden="true"></span>Open to new grad product design roles, starting 2027</span>
-        <span class="chip">M.S. Computer Science (Cybersecurity), GWU, May 2027</span>
-        <span class="chip">Washington, D.C.</span>
-      </div>
+<details class="case-study" id="aurora">
+  <summary class="case-summary">
+    <span class="case-number">02</span>
+    <span class="case-summary-title">AURORA &amp; Watchpost</span>
+    <span class="case-summary-note">One urgent decision. Two different contexts.</span>
+    <span class="case-toggle" aria-hidden="true">+</span>
+  </summary>
+  <div class="case-detail">
+    <p class="case-overview">An early-warning experience for critical infrastructure, first as a web dashboard with spoken alerts, then rethought as a private, voice-first app for iPhone, iPad, and Mac.</p>
+    <dl class="case-facts">
+      <div><dt>My role</dt><dd>Product designer &amp; builder</dd></div>
+      <div><dt>Context</dt><dd>DC Critical Ops Hackathon 2026 → independent iteration</dd></div>
+      <div><dt>Platform</dt><dd>Web · iOS · iPadOS · macOS</dd></div>
+    </dl>
+    <div class="case-story-grid">
+      <section class="story-block">
+        <h3>The problem</h3>
+        <p>Network, physical security, and threat intelligence teams watch separate screens. The early signals of an incident can be scattered across all three.</p>
+        <p>An operator needs to understand the situation and decide whether to escalate, including when they are on the floor and away from a desk.</p>
+      </section>
+      <section class="story-block">
+        <h3>Version 1: design for the decision</h3>
+        <ol>
+          <li><strong>Put the urgent information first.</strong> Show the headline, priority, and confidence before evidence, historical context, and an escalation recommendation.</li>
+          <li><strong>Let the interface speak.</strong> Read critical alerts aloud and support spoken follow-up questions. The target was under 60 seconds from raw signal to spoken assessment.</li>
+          <li><strong>Make system state visible.</strong> Show when voice and AI are ready, and keep the dashboard usable when AI is unavailable.</li>
+        </ol>
+      </section>
+      <section class="story-block">
+        <h3>What the demo changed</h3>
+        <p>In the demo scenario, giving the AI analyst an annotated camera frame changed its confidence from 60 to 80 and its recommendation from monitoring to immediate escalation.</p>
+        <p>I demoed AURORA to judges and attendees and carried their feedback into the next iteration. A larger question emerged: how could the experience work away from a screen, without sending sensitive data to outside models?</p>
+      </section>
+      <section class="story-block">
+        <h3>Version 2: meet the operator where they are</h3>
+        <p>Watchpost brings triage into Siri, Shortcuts, Spotlight, and the Mac menu bar. Seven phrases across three shortcuts work without setup.</p>
+        <p>AI runs on the device. A rules engine provides briefs when Apple Intelligence is unavailable, and fixed rules always determine the priority score. VoiceOver labels, empty states, and swipe actions support the experience across devices.</p>
+      </section>
     </div>
-  </section>
-
-  <section class="principles" aria-label="Design principles">
-    <div class="wrap">
-      <div class="principle">
-        <h2>Evidence before verdicts</h2>
-        <p>Facts decide the outcome. AI opinions are labeled as opinions and point to what they are based on.</p>
-        <span class="src">Patchsentry</span>
-      </div>
-      <div class="principle">
-        <h2>Design for the worst five minutes</h2>
-        <p>When someone is under pressure, lead with what happened, how sure we are and what to do next.</p>
-        <span class="src">AURORA · Watchpost</span>
-      </div>
-      <div class="principle">
-        <h2>Let people feel the tradeoff</h2>
-        <p>Abstract risks land when people make a choice and watch it play out, so I turn analysis into interaction.</p>
-        <span class="src">WARBREAK</span>
-      </div>
+    <div class="case-evidence" aria-label="AURORA demo evidence and Watchpost features">
+      <div class="evidence-item"><strong>60 → 80</strong><span>analyst confidence in the demo scenario</span></div>
+      <div class="evidence-item"><strong>20/20</strong><span>anomalies detected in the test set</span></div>
+      <div class="evidence-item"><strong>7</strong><span>Siri phrases across 3 shortcuts</span></div>
+      <div class="evidence-item"><strong>0</strong><span>network calls in Watchpost</span></div>
     </div>
-  </section>
-
-  <section class="section" id="work">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Selected work</p>
-        <h2>Three case studies</h2>
-      </div>
-      <div class="index">
-        <a href="#patchsentry">
-          <span class="tag">AI experience · Web</span>
-          <h3>Patchsentry</h3>
-          <p>Making AI code review something a team can trust before it merges.</p>
-        </a>
-        <a href="#aurora">
-          <span class="tag">Multimodal AI · Voice · iOS</span>
-          <h3>AURORA and Watchpost</h3>
-          <p>One alerting problem, designed twice: a hackathon dashboard, then a private, voice-first app.</p>
-        </a>
-        <a href="#warbreak">
-          <span class="tag">Interaction design · Data viz</span>
-          <h3>WARBREAK</h3>
-          <p>Turning a plan's hidden assumptions into a game you can lose, and learn from.</p>
-        </a>
-      </div>
+    <div class="case-actions">
+      <a href="https://github.com/Vaidehi2510/AURORA">Explore AURORA <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/Vaidehi2510/watchpost">Explore Watchpost <span aria-hidden="true">↗</span></a>
     </div>
-  </section>
+  </div>
+</details>
 
-  <!-- Case study 1 -->
-  <section class="section case" id="patchsentry">
-    <div class="wrap">
-      <div class="case-head">
-        <p class="eyebrow">Case study 01 · Designing an AI-powered experience</p>
-        <h2>Patchsentry: AI review a team can trust</h2>
-        <p class="sum">A QA workspace where five AI specialists review every pull request, and real test results, not the model, decide whether it passes.</p>
-      </div>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Product designer and builder</dd></div>
-        <div><dt>Year</dt><dd>2026</dd></div>
-        <div><dt>Platform</dt><dd>Web app and GitHub integration</dd></div>
-        <div><dt>Built with</dt><dd>Codex, Claude Code, Next.js</dd></div>
-      </dl>
-
-      <div class="case-body">
-        <div class="story">
-          <div>
-            <h3>The problem</h3>
-            <p>AI code reviewers sound equally confident when they are right and when they are guessing. A developer deciding whether to merge cannot tell what was actually tested from what a model assumed. Teams with private code also cannot send it to just any cloud model.</p>
-          </div>
-          <div>
-            <h3>Who it is for</h3>
-            <p>Developers and reviewers making a merge decision on a pull request, and the team leads who set up which checks and models run.</p>
-          </div>
-          <div>
-            <h3>Key decisions</h3>
-            <ul class="decisions">
-              <li><strong>Separate facts from opinions.</strong> Test results establish pass or fail. Findings from the AI team are labeled separately and can never override real test evidence.</li>
-              <li><strong>Every finding shows its source.</strong> Each one links to the code or evidence behind it, with a before-and-after diff and a suggested regression test, and every verdict is tied to the exact revision inspected.</li>
-              <li><strong>Ask instead of guessing.</strong> When a requirement is ambiguous, the review stops and asks a human to clarify.</li>
-              <li><strong>Status first, detail on demand.</strong> The review opens on a plain status ("Attention needed" or "Review complete") and a summary of checks. Tabs split detail into Behavior, Interface, Security and Boundary case.</li>
-              <li><strong>Onboarding that mirrors the job.</strong> Four steps: connect your product, build your QA team, choose a change, decide with evidence.</li>
-              <li><strong>Control over the model.</strong> Teams build their QA team from five specialists (test planner, code reviewer, security reviewer, UI/UX reviewer, bug triage), set how far each may investigate, and pick a model for each role: hosted, or local with no cloud fallback for confidential code.</li>
-              <li><strong>Honest copy.</strong> The product says plainly that no model can guarantee it finds every bug, and that coverage depends on your tests and journeys.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>How AI shaped the work</h3>
-            <p>AI is the material and the tool. I designed how model output is presented, labeled and challenged, and I built the product with Codex and Claude Code, which let me test the real review flow on real pull requests instead of static mockups.</p>
-          </div>
-          <div>
-            <h3>Accessibility and quality</h3>
-            <p>Patchsentry's own browser checks run axe-core accessibility audits on desktop and mobile viewports. The web app passed with zero violations on the pages tested.</p>
-          </div>
-        </div>
-        <aside class="evidence" aria-label="Patchsentry evidence">
-          <p class="eyebrow">Evidence</p>
-          <div class="stat"><b>5</b><span>AI specialist roles per review</span></div>
-          <div class="stat"><b>400+</b><span>hosted models to choose from, or local models</span></div>
-          <div class="stat"><b>0</b><span>axe-core violations on tested pages</span></div>
-          <div class="stat"><b>278</b><span>automated tests (244 engine, 34 web app)</span></div>
-          <div class="links">
-            <a href="https://patchsentry.vercel.app">Live product</a>
-            <a href="https://github.com/Vaidehi2510/QA-testbot">Source on GitHub</a>
-          </div>
-        </aside>
-      </div>
-
-      <figure>
-        <div class="frame">
-          <div class="wf ps" role="img" aria-label="Wireframe of the Patchsentry review workspace: a status badge, a check summary, tabs, an AI finding with a diff, and a request for human input.">
-            <div class="ps-top">
-              <div class="ps-title">
-                <strong>A smoother checkout</strong>
-                <span><span class="bar" style="width:90px"></span> · <span class="bar" style="width:60px"></span></span>
-              </div>
-              <span class="badge b-warn">● Attention needed</span>
-            </div>
-            <div class="ps-rows">
-              <div class="ps-row"><span class="badge b-test">Test result</span><span>Checks passed</span><span class="badge b-ok">Pass</span></div>
-              <div class="ps-row"><span class="badge b-test">Test result</span><span>Shipping threshold check</span><span class="badge b-crit">Fail</span></div>
-              <div class="ps-row"><span class="badge b-ai">AI finding</span><span>Accessibility: 1 issue</span><span class="badge b-warn">Review</span></div>
-            </div>
-            <div class="tabs" aria-hidden="true"><span class="on">Behavior</span><span>Interface</span><span>Security</span><span>Boundary case</span></div>
-            <div class="ps-split">
-              <div class="panel">
-                <span class="badge b-ai" style="justify-self:start">AI finding · links to code</span>
-                <span class="bar" style="width:80%"></span>
-                <div class="diff">
-                  <div class="minus">− <span class="bar" style="width:70%"></span></div>
-                  <div class="plus">+ <span class="bar" style="width:62%"></span></div>
-                </div>
-                <span style="font-size:0.8125rem;color:var(--muted)">Suggested regression test attached</span>
-              </div>
-              <div class="ask">
-                <strong>Needs a human</strong>
-                <span style="color:var(--muted)">This requirement can be read two ways. Which one did you mean?</span>
-                <div class="btns"><span class="primary">Answer</span><span>Skip</span></div>
-              </div>
-            </div>
-            <div class="ps-foot"><span>Verdict tied to commit <span class="bar" style="width:48px"></span></span><span>Evidence ready</span><span>0 source edits</span></div>
-          </div>
-        </div>
-        <figcaption><b>Wireframe</b>The review workspace. Test results and AI findings use different labels, so the verdict always comes from evidence. Example content from the product's sample review.</figcaption>
-      </figure>
+<details class="case-study" id="warbreak">
+  <summary class="case-summary">
+    <span class="case-number">03</span>
+    <span class="case-summary-title">WARBREAK</span>
+    <span class="case-summary-note">Making complex tradeoffs tangible</span>
+    <span class="case-toggle" aria-hidden="true">+</span>
+  </summary>
+  <div class="case-detail">
+    <p class="case-overview">An AI planning tool that finds the assumptions hidden in a plan, then turns them into a simulation. People make choices, watch the consequences, and explore why their plan failed.</p>
+    <dl class="case-facts">
+      <div><dt>My role</dt><dd>Product designer &amp; builder</dd></div>
+      <div><dt>Context</dt><dd>SCSP AI+ Expo 2026 · Wargaming Track</dd></div>
+      <div><dt>Platform</dt><dd>Web · interactive maps &amp; data visualization</dd></div>
+    </dl>
+    <div class="case-story-grid">
+      <section class="story-block">
+        <h3>The problem</h3>
+        <p>Plans can fail on assumptions nobody wrote down. A report listing those assumptions is easy to skim and forget.</p>
+        <p>I wanted people to experience which assumption breaks first, through decisions they make themselves.</p>
+      </section>
+      <section class="story-block">
+        <h3>Four screens, one learning loop</h3>
+        <ol>
+          <li><strong>Plan.</strong> Write in plain English or choose a scenario. AI extracts assumptions and scores their fragility from 0 to 100.</li>
+          <li><strong>Prepare.</strong> Choose from twelve assets within a fixed budget.</li>
+          <li><strong>Play.</strong> Take turns on a live map against an adversary targeting the weakest assumption.</li>
+          <li><strong>Reflect.</strong> Review what failed, why it failed, and how another timeline could unfold.</li>
+        </ol>
+      </section>
+      <section class="story-block">
+        <h3>Make each decision matter</h3>
+        <p>The number of turns equals the number of assets selected, so resources and time are linked. Six live metrics show consequences for public opinion, domestic and allied support, and force strength.</p>
+        <p>Animated strikes, sonar rings, cyber pulses, and movement make the result of a turn visible on the map. A move that succeeds in one dimension can still weaken the overall plan.</p>
+      </section>
+      <section class="story-block">
+        <h3>Explain the loss</h3>
+        <p>The seven-tab Failure Autopsy connects assumptions to decisions and consequences. It includes the decision log, adversary reasoning, a metrics verdict, failure chains, alternative timelines, and recommendations.</p>
+        <p>The interaction carries the explanation: make a choice, see its effects, then trace those effects back to the assumption that made the plan fragile.</p>
+      </section>
     </div>
-  </section>
-
-  <!-- Case study 2 -->
-  <section class="section case" id="aurora">
-    <div class="wrap">
-      <div class="case-head">
-        <p class="eyebrow">Case study 02 · Multimodal AI, voice, iteration</p>
-        <h2>AURORA and Watchpost: one alert, designed twice</h2>
-        <p class="sum">An early-warning system for critical infrastructure, first as a hackathon web dashboard with spoken alerts, then redesigned as a private, voice-first app for iPhone, iPad and Mac.</p>
-      </div>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Product designer and builder</dd></div>
-        <div><dt>Context</dt><dd>DC Critical Ops Hackathon 2026, then independent</dd></div>
-        <div><dt>Platform</dt><dd>Web dashboard; iOS, iPadOS, macOS</dd></div>
-        <div><dt>Built with</dt><dd>React, FastAPI, LLMs; SwiftUI, App Intents</dd></div>
-      </dl>
-
-      <div class="case-body">
-        <div class="story">
-          <div>
-            <h3>The problem</h3>
-            <p>Network, physical security and threat intelligence teams each watch their own screen. The signals that come before an attack on a substation are often spread across all three, and nobody connects them in time.</p>
-          </div>
-          <div>
-            <h3>Who it is for</h3>
-            <p>Operators watching critical sites, who may be on the floor rather than at a desk, and who need to decide quickly whether to escalate to incident response.</p>
-          </div>
-          <div>
-            <h3>Version 1: AURORA</h3>
-            <ul class="decisions">
-              <li><strong>Lead with the decision.</strong> Alert cards open with headline, priority and confidence. Evidence, the closest historical match, the AI analyst's verdict and an escalation recommendation follow in that order.</li>
-              <li><strong>Speak when it matters.</strong> Critical alerts are read aloud. Operators can ask follow-up questions by voice and hear the answer, so their eyes and hands stay free. The target was under 60 seconds from raw signal to a spoken assessment.</li>
-              <li><strong>Show the AI what a person would see.</strong> The analyst reviews the camera frame with the anomaly boxed. In the demo, seeing the frame moved its verdict from "possible threat, 60, do not escalate" to "probable threat, 80, escalate to IR immediately."</li>
-              <li><strong>Make system state visible.</strong> Voice and AI status indicators show READY before an operator relies on them, and the dashboard keeps working in a reduced mode when the AI is unavailable.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>What I learned from the demo</h3>
-            <p>I demoed AURORA to hackathon judges and attendees and folded their feedback into the next iteration. The bigger lesson was about context: a cloud dashboard asks an operator to be at a screen and to send sensitive data to outside models.</p>
-          </div>
-          <div>
-            <h3>Version 2: Watchpost</h3>
-            <ul class="decisions">
-              <li><strong>Meet people where they already are.</strong> Three Siri shortcuts work with zero setup, using seven phrases such as "Triage VPN outage in Watchpost." Spotlight results open the exact incident, and a menu bar glance covers the Mac.</li>
-              <li><strong>Private by default.</strong> All AI runs on the device, with zero network calls.</li>
-              <li><strong>Never a dead end.</strong> On devices without Apple Intelligence, a rules engine writes the brief, so every user gets an answer.</li>
-              <li><strong>Explainable ranking.</strong> The 0–100 priority score always comes from fixed rules, even when a model writes the summary, so the same incident always ranks the same way.</li>
-              <li><strong>Built for everyone.</strong> VoiceOver labels, empty states and swipe actions across iPhone, iPad and Mac.</li>
-            </ul>
-          </div>
-        </div>
-        <aside class="evidence" aria-label="AURORA and Watchpost evidence">
-          <p class="eyebrow">Evidence</p>
-          <div class="stat"><b>&lt;60 s</b><span>raw signal to spoken alert</span></div>
-          <div class="stat"><b>60 → 80</b><span>analyst confidence once it saw the annotated frame</span></div>
-          <div class="stat"><b>20/20</b><span>anomalies caught, 0 false alarms on 80 normal frames</span></div>
-          <div class="stat"><b>7</b><span>Siri phrases across 3 zero-setup shortcuts</span></div>
-          <div class="stat"><b>0</b><span>network calls in Watchpost</span></div>
-          <div class="links">
-            <a href="https://github.com/Vaidehi2510/AURORA">AURORA on GitHub</a>
-            <a href="https://github.com/Vaidehi2510/watchpost">Watchpost on GitHub</a>
-          </div>
-        </aside>
-      </div>
-
-      <figure>
-        <div class="frame">
-          <div class="wf au" role="img" aria-label="Wireframe of an AURORA alert card next to an annotated camera frame and the analyst verdict before and after seeing it.">
-            <div class="alert-card">
-              <span class="order">1 · Decide</span>
-              <strong style="font-family:var(--display);font-size:1.0625rem">Coordinated activity at Substation Alpha</strong>
-              <div class="row"><span class="badge b-crit">CRITICAL</span><span class="badge b-test">Confidence 99.98%</span><span class="badge b-test">Substation Alpha</span></div>
-              <span class="order">2 · Evidence</span>
-              <div class="ev">
-                <div><span class="badge b-test">Network</span><span class="bar" style="width:100%"></span><span class="bar" style="width:100%"></span></div>
-                <div><span class="badge b-test">Camera</span><span class="bar" style="width:100%"></span><span class="bar" style="width:100%"></span></div>
-                <div><span class="badge b-test">Intel</span><span class="bar" style="width:100%"></span><span class="bar" style="width:100%"></span></div>
-              </div>
-              <span class="order">3 · Context</span>
-              <span>87% match to the 2015 Ukraine grid attack</span>
-              <span class="order">4 · Act</span>
-              <div class="row"><span class="badge b-ai">AI analyst: true positive, 82/100</span><span class="badge b-crit">Escalate to IR</span></div>
-              <div class="voice"><span class="badge b-ok">▶ Spoken alert</span><span class="badge b-test">Ask by voice</span></div>
-            </div>
-            <div class="verdicts">
-              <div class="cam"><span class="box"></span><span class="lbl">Anomaly boxed for the analyst</span></div>
-              <div class="verdict"><span class="k">Without the frame</span><span>Possible threat · 60 · do not escalate</span></div>
-              <div class="verdict" style="border-color:var(--crit)"><span class="k">With the frame</span><span>Probable threat · 80 · escalate to IR immediately</span></div>
-            </div>
-          </div>
-        </div>
-        <figcaption><b>Wireframe</b>AURORA's alert card, ordered decide, evidence, context, act. Values come from the project's demo scenario.</figcaption>
-      </figure>
-
-      <figure>
-        <div class="frame">
-          <div class="wf wp" role="img" aria-label="Wireframe of Watchpost: two Siri phrases and a triage brief with a priority gauge.">
-            <div class="siri"><span class="eyebrow">Siri</span><span class="say">"Triage <em>VPN outage</em> in Watchpost"</span><span style="color:var(--muted);font-size:0.8125rem">Speaks a triage brief and returns typed values to later Shortcuts steps</span></div>
-            <div class="siri"><span class="eyebrow">Siri</span><span class="say">"Show <em>critical</em> incidents in Watchpost"</span><span style="color:var(--muted);font-size:0.8125rem">Filters by severity without opening the app</span></div>
-            <div class="panel">
-              <span class="eyebrow">Triage brief · on device</span>
-              <div class="gauge" aria-hidden="true"><i></i></div>
-              <span style="font-size:0.8125rem;color:var(--muted)">Priority from fixed rules; summary from the on-device model, or rules when it is unavailable</span>
-              <span class="bar" style="width:90%"></span><span class="bar" style="width:70%"></span>
-            </div>
-          </div>
-        </div>
-        <figcaption><b>Wireframe</b>Watchpost moves the same job into Siri, Shortcuts and Spotlight. The highlighted words are parameters people can change.</figcaption>
-      </figure>
+    <div class="case-evidence" aria-label="WARBREAK interaction features">
+      <div class="evidence-item"><strong>12</strong><span>assets competing for one budget</span></div>
+      <div class="evidence-item"><strong>6</strong><span>live consequence metrics</span></div>
+      <div class="evidence-item"><strong>7</strong><span>perspectives in the Failure Autopsy</span></div>
+      <div class="evidence-item"><strong>0–100</strong><span>assumption fragility scale</span></div>
     </div>
-  </section>
-
-  <!-- Case study 3 -->
-  <section class="section case" id="warbreak">
-    <div class="wrap">
-      <div class="case-head">
-        <p class="eyebrow">Case study 03 · Interaction design for complex analysis</p>
-        <h2>WARBREAK: the game is the interface</h2>
-        <p class="sum">An AI planning tool that finds the hidden assumptions in a plan, then lets you play it out against an adversary that attacks the weakest one.</p>
-      </div>
-      <dl class="meta">
-        <div><dt>Role</dt><dd>Product designer and builder</dd></div>
-        <div><dt>Context</dt><dd>SCSP AI+ Expo 2026, Wargaming Track</dd></div>
-        <div><dt>Platform</dt><dd>Web</dd></div>
-        <div><dt>Built with</dt><dd>Next.js, Leaflet, FastAPI, Gemini</dd></div>
-      </dl>
-
-      <div class="case-body">
-        <div class="story">
-          <div>
-            <h3>The problem</h3>
-            <p>Plans fail on assumptions nobody wrote down. A report listing those assumptions is easy to skim and forget. I wanted people to feel which assumption breaks first.</p>
-          </div>
-          <div>
-            <h3>The flow</h3>
-            <p>Write or pick a plan in plain English. AI pulls out its hidden assumptions and scores each one 0–100 for fragility. Choose assets under a budget, play turns on a live map, then read an autopsy of what failed and why.</p>
-          </div>
-          <div>
-            <h3>Key decisions</h3>
-            <ul class="decisions">
-              <li><strong>Budgets create real choices.</strong> Twelve assets compete for a fixed budget, and the number of turns equals the number of assets you pick, so every choice costs something.</li>
-              <li><strong>Show consequences beyond the obvious score.</strong> Six live metrics track public opinion, domestic and allied support and force strength, so a move that wins on the map can still lose overall.</li>
-              <li><strong>Make the map talk.</strong> Strikes, sonar rings, cyber pulses and ground movement animate on the map, so each move has visible feedback.</li>
-              <li><strong>Explain the loss.</strong> A seven-tab Failure Autopsy covers the assumption chain, the decision log, the adversary's reasoning on each turn, the failure chain, a what-if comparison of your timeline with a better one, and recommendations.</li>
-            </ul>
-          </div>
-        </div>
-        <aside class="evidence" aria-label="WARBREAK evidence">
-          <p class="eyebrow">Evidence</p>
-          <div class="stat"><b>0–100</b><span>fragility score for each hidden assumption</span></div>
-          <div class="stat"><b>12</b><span>budget-limited assets</span></div>
-          <div class="stat"><b>6</b><span>live metrics beyond the map</span></div>
-          <div class="stat"><b>7</b><span>tabs in the Failure Autopsy</span></div>
-          <div class="links">
-            <a href="https://github.com/Vaidehi2510/WARBREAK">Source on GitHub</a>
-          </div>
-        </aside>
-      </div>
-
-      <figure>
-        <div class="frame">
-          <div class="wf flow" role="img" aria-label="User flow across four screens: plan, assets, wargame and autopsy.">
-            <div class="screen"><span class="path">/</span><strong>Plan</strong><ul><li>Pick a scenario or write a plan</li><li>AI extracts assumptions</li><li>Fragility scores 0–100</li></ul></div>
-            <div class="screen"><span class="path">/assets</span><strong>Assets</strong><ul><li>12 assets, one budget</li><li>Opponent briefing with confidence levels</li><li>Turns = assets chosen</li></ul></div>
-            <div class="screen"><span class="path">/game</span><strong>Wargame</strong><ul><li>Animated live map</li><li>Adversary targets the weakest assumption</li><li>6 live metrics</li></ul></div>
-            <div class="screen"><span class="path">/autopsy</span><strong>Autopsy</strong><ul><li>Assumption chain</li><li>Decision log</li><li>Adversary reasoning</li><li>Metrics verdict</li><li>Failure chain</li><li>What-if timelines</li><li>Recommendations</li></ul></div>
-          </div>
-        </div>
-        <figcaption><b>Flow</b>Four screens, from a plain-English plan to an explanation of why it failed.</figcaption>
-      </figure>
+    <div class="case-actions">
+      <a href="https://github.com/Vaidehi2510/WARBREAK">Explore the project <span aria-hidden="true">↗</span></a>
     </div>
-  </section>
+  </div>
+</details>
 
-  <!-- Process -->
-  <section class="section case" id="process">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">How I work</p>
-        <h2>AI is part of every step</h2>
+        </div>
       </div>
-      <ol class="steps">
-        <li><h3>Start with the person</h3><p>Talk to the people with the problem and write down what they need. At OpenTeams I turned a user's migration needs into a gap analysis of what was supported, partial and missing.</p></li>
-        <li><h3>Sketch the flow</h3><p>Map the journey and the key screens in Figma, and decide what each screen must answer first.</p></li>
-        <li><h3>Prototype for real</h3><p>Build a working version with Claude Code, Codex or Cursor, so people react to real behavior and real data instead of static frames.</p></li>
-        <li><h3>Test and refine</h3><p>Put it in front of people, run accessibility audits on desktop and mobile, and change what the evidence says to change.</p></li>
+    </section>
+
+    <section class="approach-section section-pad" id="approach" aria-labelledby="approach-heading"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">02 / My approach</p><h2 id="approach-heading">Curiosity first.<br>Clarity follows.</h2></div><p>I like the space between “this is complicated” and “that makes sense.” Here’s how I get there.</p></div>
+      <ol class="process-grid">
+        <li class="process-card reveal"><div class="process-art art-listen" aria-hidden="true"><span class="listen-bubble">?</span><span class="listen-small">!</span></div><span class="process-step mono">01 / UNDERSTAND</span><h3>Start with a person.</h3><p>Ask what they need, what gets in the way, and what happens when things go wrong.</p><span class="process-output">User needs · Problem framing</span></li>
+        <li class="process-card reveal"><div class="process-art art-map" aria-hidden="true"><i></i><i></i><i></i><span>↗</span></div><span class="process-step mono">02 / EXPLORE</span><h3>Find the right shape.</h3><p>Map the journey. Sketch the alternatives. Decide what each screen needs to answer first.</p><span class="process-output">User flows · Information architecture</span></li>
+        <li class="process-card reveal"><div class="process-art art-build" aria-hidden="true"><span class="build-window"><i></i><b>↗</b></span><span class="build-cursor">↖</span></div><span class="process-step mono">03 / MAKE</span><h3>Make it feel real.</h3><p>Move from Figma to a working prototype so people can react to behavior, not just a picture.</p><span class="process-output">Interaction · Visual design · Code</span></li>
+        <li class="process-card reveal"><div class="process-art art-refine" aria-hidden="true"><span>↻</span><i>✓</i></div><span class="process-step mono">04 / REFINE</span><h3>Follow the evidence.</h3><p>Listen to feedback, check accessibility, and keep changing what isn’t working.</p><span class="process-output">Feedback · Accessibility · Iteration</span></li>
       </ol>
-      <div class="tools" aria-label="Tools">
-        <span class="chip">Figma</span><span class="chip">Framer</span><span class="chip">Webflow</span><span class="chip">Cursor</span><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">React and Next.js</span><span class="chip">SwiftUI</span><span class="chip">Playwright and axe-core</span>
-      </div>
-    </div>
-  </section>
+      <div class="toolkit reveal"><span class="mono">A FEW TOOLS I THINK WITH</span><div><span>Figma</span><span>Framer</span><span>Webflow</span><span>Claude Code</span><span>Codex</span><span>React</span><span>SwiftUI</span><span>Playwright</span></div></div>
+    </div></section>
 
-  <!-- About -->
-  <section class="section case" id="about">
-    <div class="wrap about">
-      <div class="about-text">
-        <p class="eyebrow">About</p>
-        <h2 style="font-size:var(--step-3)">Designer with a security mind</h2>
-        <p>I'm finishing an M.S. in Computer Science with a focus on cybersecurity at The George Washington University, graduating in May 2027. Before that I earned a B.Tech in Electronics and Communication.</p>
-        <p>Security taught me to ask what happens when things go wrong, and who gets hurt. That question drives how I design AI: show the evidence, be honest about confidence, and give people a clear way to step in.</p>
-        <p>I've worked close to users. As a support engineer I helped more than 15 enterprise customers through their hardest escalations and learned to explain complex failures in plain language.</p>
+    <section class="about-section section-pad" id="about" aria-labelledby="about-heading"><div class="wrap about-grid">
+      <div class="about-art reveal"><div class="about-art-top mono"><span>A LITTLE ABOUT ME</span><span>↗</span></div><div class="monogram" aria-hidden="true">v<span>p.</span></div><div class="about-sticker sticker-one">Designer.</div><div class="about-sticker sticker-two">Builder.</div><div class="about-sticker sticker-three">Always curious.</div><div class="about-art-bottom"><span class="status-dot" aria-hidden="true"></span> Based in Washington, D.C.</div><svg class="about-spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 59 29 79 10 72 38 100 36 78 53 96 74 67 70 66 100 49 76 28 96 32 67 2 66 26 48 5 28 34 32Z"/></svg></div>
+      <div class="about-copy reveal"><p class="eyebrow">03 / The person behind the pixels</p><h2 id="about-heading">A designer’s eye.<br>A security mindset.</h2><p>I’m Vaidehi, a designer and builder who asks a lot of “what if?” questions. My background in cybersecurity taught me to look for the edge cases, the hidden assumptions, and the person who might get left out.</p><p>That’s how I approach product design, too. Make the complex understandable. Be honest about uncertainty. Give people a way forward.</p><p>I’m finishing my <strong>M.S. in Computer Science at The George Washington University</strong>, with a focus on cybersecurity, graduating in May 2027.</p>
+        <div class="experience-list"><div><span class="experience-year">2026</span><div><h3>OpenTeams AI</h3><p>Product Intern, Security</p></div><span aria-hidden="true">↗</span></div><div><span class="experience-year">2024–25</span><div><h3>Dev IT</h3><p>Technical Support Engineer · 15+ enterprise customers</p></div><span aria-hidden="true">↗</span></div><div><span class="experience-year">2021–23</span><div><h3>EPI-USE India</h3><p>Technical Consultant · 30% faster releases</p></div><span aria-hidden="true">↗</span></div></div>
       </div>
-      <div class="roles">
-        <div class="role"><b>OpenTeams AI</b><span>Product Intern, Security · May–Aug 2026</span><p>Scoped a user's move from another AI assistant and recommended a planned migration over a one-click importer that could not preserve behavior. Held an irreversible auto-correct until the affected list was verified. Worked daily with product, design, engineering and PM.</p></div>
-        <div class="role"><b>Dev IT</b><span>Technical Support Engineer · 2024–2025</span><p>Supported 15+ enterprise customers and turned recurring issues into runbooks and knowledge-base articles that cut handle time.</p></div>
-        <div class="role"><b>EPI-USE India</b><span>Technical Consultant · 2021–2023</span><p>Automated release workflows, cutting release time 30%.</p></div>
-      </div>
-    </div>
-  </section>
-</main>
+    </div></section>
 
-<section class="contact" id="contact">
-  <div class="wrap">
-    <h2>Let's talk</h2>
-    <p>I'm looking for a new grad product design role starting in 2027, on a team designing AI into products people use every day.</p>
-    <div class="contact-row">
-      <span class="email" id="email">vaidehi.pandya@gwu.edu</span>
-      <button class="copy" id="copy-email" type="button">Copy email</button>
-    </div>
-    <div class="contact-row">
-      <a href="https://www.linkedin.com/in/vaidehi-pandya/">LinkedIn</a>
-      <a href="https://github.com/Vaidehi2510">GitHub</a>
-    </div>
-  </div>
-</section>
-<footer class="wrap foot">Built with Claude. Wireframes recreate screens from each project.</footer>
-
-<script>
-(function () {
-  var btn = document.getElementById("copy-email");
-  var email = document.getElementById("email");
-  if (!btn || !email) return;
-  btn.addEventListener("click", function () {
-    var text = email.textContent.trim();
-    function selectIt() {
-      var r = document.createRange();
-      r.selectNodeContents(email);
-      var s = window.getSelection();
-      s.removeAllRanges();
-      s.addRange(r);
-      btn.textContent = "Press Ctrl+C to copy";
-    }
-    try {
-      navigator.clipboard.writeText(text).then(function () {
-        btn.textContent = "Copied";
-        setTimeout(function () { btn.textContent = "Copy email"; }, 2000);
-      }, selectIt);
-    } catch (e) { selectIt(); }
-  });
-})();
-</script>
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading"><div class="wrap">
+      <div class="contact-topline"><p class="eyebrow">04 / Let’s make something thoughtful</p><span class="contact-availability"><span class="status-dot" aria-hidden="true"></span> Open to opportunities in 2027</span></div>
+      <div class="contact-main reveal"><h2 id="contact-heading">Good things start<br>with a <em>hello.</em></h2><a class="contact-arrow" href="mailto:vaidehi.pandya@gwu.edu" aria-label="Email Vaidehi" data-email-link>↗</a></div>
+      <div class="contact-bottom"><div><a class="email-link" href="mailto:vaidehi.pandya@gwu.edu" data-email-link>vaidehi.pandya@gwu.edu</a><button class="copy-button requires-js" id="copy-email" type="button" data-email="vaidehi.pandya@gwu.edu" aria-label="Copy email address" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></svg></button><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></div><div class="social-links"><a href="https://www.linkedin.com/in/vaidehi-pandya/">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Vaidehi2510">GitHub <span aria-hidden="true">↗</span></a></div></div>
+    </div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="wordmark" href="#top">vaidehi<span>.</span></a><p>Thoughtfully designed. Always a work in progress.</p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>
 </body>
 </html>
