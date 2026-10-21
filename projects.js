@@ -10,6 +10,8 @@
   const count = section.querySelector('#project-count');
   const empty = section.querySelector('#project-empty');
   const reset = section.querySelector('#reset-project-filters');
+  const showAll = section.querySelector('#project-show-all');
+  const more = showAll?.closest('.project-more');
   const filters = [...section.querySelectorAll('[data-project-filter]')];
   if (!search || !sort || !grid || !count || !empty || !reset || !filters.length) return;
 
@@ -26,6 +28,8 @@
   }));
 
   let activeFilter = filters.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.projectFilter || 'all';
+  let expanded = false;
+  const initialLimit = showAll && more ? 6 : cards.length;
   const byFeatured = (a, b) => a.order - b.order || a.index - b.index;
   const resultAnimations = new Set();
   const motionEnabled = () => document.documentElement.dataset.motion === 'on' && !document.hidden;
@@ -85,16 +89,22 @@
   const updateResults = () => {
     cancelResultAnimations();
     const terms = normalize(search.value).split(/\s+/).filter(Boolean);
+    const limit = !expanded && !terms.length && activeFilter === 'all' && sort.value === 'featured'
+      ? initialLimit : cards.length;
     let visible = 0;
+    let matches = 0;
     cards.forEach((card) => {
       const matchesCategory = activeFilter === 'all' || card.categories.includes(activeFilter);
       const matchesSearch = terms.every((term) => card.searchable.includes(term));
-      card.element.hidden = !(matchesCategory && matchesSearch);
+      const isMatch = matchesCategory && matchesSearch;
+      if (isMatch) matches += 1;
+      card.element.hidden = !isMatch || visible >= limit;
       if (!card.element.hidden) visible += 1;
     });
     filters.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.projectFilter === activeFilter)));
     count.textContent = `${visible} of ${cards.length} ${cards.length === 1 ? 'repository' : 'repositories'}`;
     empty.hidden = visible !== 0;
+    if (more) more.hidden = visible >= matches;
   };
 
   const findRepoTarget = (hash) => {
@@ -112,6 +122,7 @@
     if (!card) return null;
     const wasHidden = card.element.hidden;
     if (wasHidden) {
+      expanded = true;
       search.value = '';
       activeFilter = 'all';
       updateResults();
@@ -154,6 +165,13 @@
     // The reset button disappears with the empty state; continue in the search field.
     search.focus({ preventScroll: true });
   });
+  showAll?.addEventListener('click', () => {
+    const firstNewCard = [...grid.querySelectorAll('.repo-card')].find((element) => element.hidden);
+    expanded = true;
+    transitionResults(updateResults);
+    // The expansion control disappears; keep keyboard focus in the new results.
+    firstNewCard?.querySelector('h3 a')?.focus();
+  });
 
   document.addEventListener('click', (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -167,6 +185,7 @@
   window.addEventListener('hashchange', revealHashTarget);
 
   sortCards();
+  more?.classList.remove('requires-js');
   updateResults();
   section.querySelectorAll('.project-controls.requires-js').forEach((controls) => {
     controls.hidden = false;

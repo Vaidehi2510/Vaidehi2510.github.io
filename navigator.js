@@ -49,6 +49,8 @@
 
   [
     ['work', 'Selected security projects'],
+    ['experience', 'Security experience'],
+    ['skills', 'Skills and tools'],
     ['upstream', 'Upstream contributions'],
     ['projects', 'All public repositories'],
     ['about', 'About Vaidehi'],
@@ -57,7 +59,7 @@
     const target = document.getElementById(id);
     if (!target) return;
     const description = text(target, '.section-heading > p') || text(target, '.about-copy > p:not(.eyebrow)') || text(target, '.contact-availability');
-    addEntry(target, title, 'Section', description, `${id} ${text(target, 'h2')}`);
+    addEntry(target, title, 'Section', description, `${id} ${text(target, 'h2')} ${id === 'experience' || id === 'skills' ? clean(target.textContent) : ''}`);
   });
 
   document.querySelectorAll('details.case-study[id]').forEach((target) => {

@@ -3,6 +3,7 @@ from datetime import date, datetime
 from html import escape
 from pathlib import Path
 import json
+import re
 
 ROOT = Path(__file__).resolve().parent.parent
 START = '<!-- PROJECT_DIRECTORY_START -->'
@@ -23,6 +24,7 @@ def build():
         name, url, title = map(escape, [repo['name'], repo['url'], repo['title']])
         updated = datetime.fromisoformat(repo['pushedAt'].replace('Z', '+00:00')).strftime('%b %-d, %Y')
         categories = escape(' '.join(repo['categories']))
+        summary = re.split(r'(?<=[.!?])\s+', repo['description'].strip(), maxsplit=1)[0]
         stack = ''.join(f'<span>{escape(tool)}</span>' for tool in repo['stack'])
         attribution = ''
         if repo.get('upstream'):
@@ -39,16 +41,22 @@ def build():
   <div class="repo-topline"><span class="repo-area">{escape(repo['area'])}</span><span class="repo-scope{' is-fork' if repo['fork'] else ''}">{escape(repo['scope'])}</span></div>
   <h3><a href="{url}">{title}</a></h3>
   <p class="repo-slug">{name}</p>
-  <p class="repo-description">{escape(repo['description'])}</p>
-  {attribution}
-  <div class="repo-stack" aria-label="Technologies">{stack}</div>
+  <p class="repo-summary">{escape(summary)}</p>
+  <details class="repo-details">
+    <summary aria-label="Project details for {title}">Project details <span aria-hidden="true">+</span></summary>
+    <div class="repo-details-content">
+      <p class="repo-description">{escape(repo['description'])}</p>
+      {attribution}
+      <div class="repo-stack" aria-label="Technologies">{stack}</div>
+      <p class="repo-date">Code updated <time datetime="{escape(repo['pushedAt'][:10])}">{updated}</time></p>
+    </div>
+  </details>
   <div class="repo-links">{''.join(links)}</div>
-  <p class="repo-date">Code updated <time datetime="{escape(repo['pushedAt'][:10])}">{updated}</time></p>
 </article>''')
     filters = [('all','All projects'),('detection','Detection & response'),('appsec','AppSec & DevSecOps'),('cloud','Infrastructure'),('ai','AI systems'),('foundations','Software & labs'),('forks','Forks')]
     buttons = ''.join(f'<button type="button" data-project-filter="{key}" aria-pressed="{str(key == "all").lower()}">{escape(label)}</button>' for key,label in filters)
     rendered = f'''<section class="directory-section section-pad" id="projects" aria-labelledby="projects-heading"><div class="wrap">
-  <div class="section-heading reveal"><div><p class="eyebrow">03 / Complete public GitHub index</p><h2 id="projects-heading">Every project.<br><span class="muted-heading">The full picture.</span></h2></div><p>All {total} public repositories, from security tooling to infrastructure labs and supporting software. The {forks} public forks are labeled with their upstream projects.</p></div>
+  <div class="section-heading reveal"><div><p class="eyebrow">06 / Public GitHub projects</p><h2 id="projects-heading">All projects.</h2></div><p>{total} public repositories, including {forks} attributed forks.</p></div>
   <div class="directory-summary"><span><strong>{total}</strong> public repositories</span><span><strong>{total-forks}</strong> non-fork repositories</span><span><strong>{forks}</strong> public forks</span><a href="{escape(catalog['profileUrl'])}?tab=repositories">GitHub profile <span aria-hidden="true">↗</span></a></div>
   <div class="project-controls requires-js" hidden>
     <div class="project-toolbar"><label class="project-search-label" for="project-search"><span>Search projects</span><span class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="project-search" type="search" placeholder="Try Python, Docker, triage, or a repository…" autocomplete="off" aria-controls="project-grid"></span></label><label class="project-sort-label" for="project-sort"><span>Sort by</span><select id="project-sort" aria-controls="project-grid"><option value="featured">Featured order</option><option value="name">Repository name</option><option value="updated">Recently updated</option></select></label></div>
@@ -56,6 +64,7 @@ def build():
   </div>
   <div class="directory-status"><p id="project-count" role="status" aria-live="polite">{total} of {total} repositories</p><p>Reviewed <time datetime="{catalog['reviewedOn']}">{reviewed}</time></p></div>
   <div class="repo-grid" id="project-grid">{''.join(cards)}</div>
+  <div class="project-more requires-js" hidden><button type="button" id="project-show-all" aria-controls="project-grid">View all {total} projects <span aria-hidden="true">↓</span></button></div>
   <div class="project-empty" id="project-empty" hidden><span aria-hidden="true">⌕</span><h3>No projects match that search.</h3><p>Try another keyword or clear your filters to see every repository.</p><button type="button" id="reset-project-filters">Show all projects <span aria-hidden="true">↗</span></button></div>
   <p class="directory-note">A source-reviewed snapshot of my public GitHub account. Project notes distinguish implemented capabilities, learning labs, and simulations; fork listings credit their upstream authors.</p>
 </div></section>'''
