@@ -32,7 +32,14 @@
         "https://github.com/Vaidehi2510/AURORA/blob/main/tests/test_correlation_engine.py",
         "https://github.com/Vaidehi2510/AURORA/blob/main/requirements.txt",
         "https://github.com/Vaidehi2510/AURORA/blob/main/frontend/package.json"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/aurora-cover.jpg",
+        "alt": "Project illustration for AURORA.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "Watchpost",
@@ -64,7 +71,14 @@
         "https://github.com/Vaidehi2510/Watchpost/blob/main/Watchpost/Intents/WatchpostShortcuts.swift",
         "https://github.com/Vaidehi2510/Watchpost/blob/main/Packages/WatchpostCore/Tests/WatchpostCoreTests/TriageEngineTests.swift",
         "https://github.com/Vaidehi2510/Watchpost/blob/main/project.yml"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/watchpost-cover.jpg",
+        "alt": "Project illustration for Watchpost.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "QA-testbot",
@@ -96,7 +110,14 @@
         "https://github.com/Vaidehi2510/QA-testbot/blob/main/src/ai/local.js",
         "https://github.com/Vaidehi2510/QA-testbot/blob/main/test/executor.test.js"
       ],
-      "reviewedCommit": "e4131c2a375667ed109c0414cc3e62df61acb8b7"
+      "reviewedCommit": "e4131c2a375667ed109c0414cc3e62df61acb8b7",
+      "image": {
+        "path": "assets/projects/patchsentry-cover.jpg",
+        "alt": "Project illustration for Patchsentry review engine.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "patchsentry-web",
@@ -126,7 +147,14 @@
         "https://github.com/Vaidehi2510/patchsentry-web/blob/main/test/backend.test.ts"
       ],
       "demo": "https://patchsentry.vercel.app",
-      "reviewedCommit": "4ba41bccf71278ef755fb83ca6fcd1d72f68ebff"
+      "reviewedCommit": "4ba41bccf71278ef755fb83ca6fcd1d72f68ebff",
+      "image": {
+        "path": "assets/projects/patchsentry-cover.jpg",
+        "alt": "Project illustration for Patchsentry workspace.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "WARBREAK",
@@ -158,7 +186,14 @@
         "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/main.py",
         "https://github.com/Vaidehi2510/WARBREAK/blob/main/frontend/package.json",
         "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/requirements.txt"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/warbreak-cover.jpg",
+        "alt": "Project illustration for WARBREAK / FOGLINE.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "devflow-ai",
@@ -191,7 +226,14 @@
         "https://github.com/Vaidehi2510/devflow-ai/blob/main/webhook.py",
         "https://github.com/Vaidehi2510/devflow-ai/blob/main/.gitlab-ci.yml"
       ],
-      "reviewedCommit": "558aa9da6143d296b8e9060ea301d8401f61aca8"
+      "reviewedCommit": "558aa9da6143d296b8e9060ea301d8401f61aca8",
+      "image": {
+        "path": "assets/projects/patchsentry-cover.jpg",
+        "alt": "Project illustration for DevFlow AI.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "Automated-Server-Provisioning-with-Ansible",
@@ -214,7 +256,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/Automated-Server-Provisioning-with-Ansible/tree/main/roles"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/infrastructure-cover.jpg",
+        "alt": "Project illustration for Server provisioning with Ansible.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "rclone-Amazon-S3-project",
@@ -237,7 +286,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/rclone-Amazon-S3-project#readme"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/infrastructure-cover.jpg",
+        "alt": "Project illustration for File transfers to Amazon S3.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "rclone-gdrive-project",
@@ -260,7 +316,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/rclone-gdrive-project#readme"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/infrastructure-cover.jpg",
+        "alt": "Project illustration for File transfers to Google Drive.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "pydough-mcp-agent",
@@ -283,7 +346,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/pydough-mcp-agent/blob/main/main.py"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for PyDough MCP agent.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "Collab_website",
@@ -306,7 +376,14 @@
       "sources": [
         "https://github.com/Vaidehi2510/Collab_website#readme"
       ],
-      "demo": "https://collab-website-pi.vercel.app"
+      "demo": "https://collab-website-pi.vercel.app",
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for OpenTeams Collab release site.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "Convex-Hull-using-Divide-and-Conquer",
@@ -327,7 +404,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/Convex-Hull-using-Divide-and-Conquer#readme"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for Convex hull: divide and conquer.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "project1-runtime-analysis",
@@ -348,7 +432,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/project1-runtime-analysis#readme"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for Experimental runtime analysis.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "Vaidehi2510.github.io",
@@ -371,7 +462,14 @@
       "caseStudy": null,
       "sources": [
         "https://github.com/Vaidehi2510/Vaidehi2510.github.io#readme"
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for Security engineering portfolio.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "apollo-capabilities",
@@ -404,7 +502,14 @@
           "summary": "Proposed a standalone, locally bound PyDough MCP capability with an isolated dependency environment.",
           "reviewedOn": "2026-10-20"
         }
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for Apollo capabilities.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "pydough-ce",
@@ -438,7 +543,14 @@
           "summary": "Proposed upstream fixes to preserve the selected database connection and protect caller-owned metadata during MCP session cleanup.",
           "reviewedOn": "2026-10-20"
         }
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for PyDough Community Edition.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     },
     {
       "name": "frame-spec",
@@ -492,7 +604,14 @@
           "summary": "Aligned Frame validator required fields with the current specification.",
           "reviewedOn": "2026-10-20"
         }
-      ]
+      ],
+      "image": {
+        "path": "assets/projects/ai-cover.jpg",
+        "alt": "Project illustration for Frame specification.",
+        "caption": "Project illustration",
+        "width": 1280,
+        "height": 800
+      }
     }
   ]
 }
