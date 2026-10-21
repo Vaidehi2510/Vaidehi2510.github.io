@@ -3,7 +3,6 @@
 
   const root = document.documentElement;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
   const runningAnimations = new Set();
 
   const readPreference = (key) => {
@@ -40,7 +39,7 @@
   const setTheme = (theme) => {
     root.dataset.theme = theme;
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = theme === 'dark' ? '#14211e' : '#f3f5f1';
+    if (themeColor) themeColor.content = theme === 'dark' ? '#100d18' : '#f7f3ed';
     if (!themeButton) return;
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     themeButton.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
@@ -48,7 +47,7 @@
     if (label) label.textContent = `${nextTheme === 'light' ? 'Light' : 'Dark'} mode`;
   };
 
-  setTheme(themePreference || (darkScheme.matches ? 'dark' : 'light'));
+  setTheme(themePreference || 'dark');
   if (themeButton) {
     themeButton.addEventListener('click', () => {
       themePreference = root.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -57,9 +56,6 @@
     });
     showControl(themeButton);
   }
-  observePreference(darkScheme, (event) => {
-    if (!themePreference) setTheme(event.matches ? 'dark' : 'light');
-  });
 
   let motionPreference = readPreference('vp-motion');
   if (!['on', 'off'].includes(motionPreference)) motionPreference = null;
@@ -151,21 +147,6 @@
       selectTab(tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0], false, false);
       demo.querySelectorAll('[role="tablist"].requires-js').forEach(showControl);
     }
-  }
-
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        revealObserver.unobserve(entry.target);
-        animate(
-          entry.target,
-          [{ opacity: 0.3, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }],
-          { duration: 560, easing: 'cubic-bezier(.2,.65,.3,1)' }
-        );
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
-    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
   }
 
   const progress = document.getElementById('reading-progress');

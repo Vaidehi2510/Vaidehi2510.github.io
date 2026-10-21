@@ -4,7 +4,10 @@ My security engineering portfolio: a static website with no build step or runtim
 
 - `index.html`: security engineering work, technical notes, upstream contributions, all public projects, focus areas, experience, and contact.
 - `styles.css`: responsive layout, light/dark themes, and motion styles.
+- `experience.css`: the Signal Atlas visual direction, responsive layouts, sculpture framing, and interaction styles.
 - `script.js`: keyboard-accessible demo tabs, theme and motion preferences, case-study navigation, and email copying.
+- `experience.js`: interactive canvas sculpture, scroll reveals, magnetic buttons, pointer effects, and card depth.
+- `navigator.js`: searchable project explorer with Command/Ctrl+K, keyboard navigation, and focus management.
 - `projects.js`: repository search, category filters, sorting, and direct project navigation.
 - `data/projects.json`: reviewed descriptions, source links, repository metadata, and fork attribution.
 - `scripts/build-project-directory.py`: regenerates the static directory from that data using Python's standard library.
@@ -44,3 +47,5 @@ The local `resume.pdf` is excluded from Git and is not published.
 Run `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000.
 
 Before publishing, check phone and desktop layouts, keyboard navigation, both themes, reduced motion, case-study links, and directory search/filter/sort behavior. Compare directory names with the account's public repository list. Content and native case-study accordions remain available without JavaScript. Theme and motion preferences are stored locally in the browser.
+
+The experience defaults to the dark theme. The motion control pauses decorative CSS effects and the canvas, and the operating system's reduced-motion preference is honored unless the visitor explicitly chooses otherwise. The sculpture adapts its resolution, draws at up to 30 frames per second, and suspends when it is offscreen or the page is in the background. Pointer effects only run for a fine pointer; touch users retain all navigation and project content.
