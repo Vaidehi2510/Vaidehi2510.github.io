@@ -2,7 +2,7 @@
 
 My security engineering portfolio: a static website with no build step or runtime dependencies for serving it.
 
-- `index.html`: security engineering work, technical notes, all public projects, focus areas, experience, and contact.
+- `index.html`: security engineering work, technical notes, upstream contributions, all public projects, focus areas, experience, and contact.
 - `styles.css`: responsive layout, light/dark themes, and motion styles.
 - `script.js`: keyboard-accessible demo tabs, theme and motion preferences, case-study navigation, and email copying.
 - `projects.js`: repository search, category filters, sorting, and direct project navigation.
@@ -13,7 +13,9 @@ My security engineering portfolio: a static website with no build step or runtim
 
 The directory covers all 17 public repositories on the account as of October 20, 2026, including three forks with upstream attribution. The technical descriptions were checked against public documentation and selected source files. Repository code was not executed as part of that review.
 
-Project previews are illustrative. Engineering notes distinguish implemented controls, prototype scope, synthetic evidence, and planned hardening. Fork entries describe their upstream projects and do not imply original authorship.
+Project previews are illustrative. Engineering notes distinguish implemented controls, prototype scope, synthetic evidence, and planned hardening. Fork entries credit their upstream projects and link to my authored contributions.
+
+The upstream section links to four merged Frame Spec PRs and two open PyDough/Apollo PRs, with authorship, diffs, and status checked on October 20, 2026. It distinguishes security guidance, validator conformance, and proposed implementation changes. Contribution links, summaries, and status snapshots live alongside the corresponding fork entries in `data/projects.json`; update the static section in `index.html` when that status changes.
 
 ## Updating the project directory
 

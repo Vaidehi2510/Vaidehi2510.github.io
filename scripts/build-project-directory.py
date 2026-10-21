@@ -31,6 +31,8 @@ def build():
         links = [f'<a href="{url}" aria-label="View {name} on GitHub">Source code <span aria-hidden="true">↗</span></a>']
         if repo.get('caseStudy'):
             links.append(f'<a href="#{escape(repo["caseStudy"])}" data-case-link>Engineering notes <span aria-hidden="true">↗</span></a>')
+        elif repo.get('contributions'):
+            links.append('<a href="#upstream">My contributions <span aria-hidden="true">↗</span></a>')
         elif repo.get('demo'):
             links.append(f'<a href="{escape(repo["demo"])}">Visit site <span aria-hidden="true">↗</span></a>')
         cards.append(f'''<article class="repo-card" id="repo-{name}" data-name="{name}" data-category="{categories}" data-updated="{escape(repo['pushedAt'])}" data-order="{order}">
@@ -46,7 +48,7 @@ def build():
     filters = [('all','All projects'),('detection','Detection & response'),('appsec','AppSec & DevSecOps'),('cloud','Infrastructure'),('ai','AI systems'),('foundations','Software & labs'),('forks','Forks')]
     buttons = ''.join(f'<button type="button" data-project-filter="{key}" aria-pressed="{str(key == "all").lower()}">{escape(label)}</button>' for key,label in filters)
     rendered = f'''<section class="directory-section section-pad" id="projects" aria-labelledby="projects-heading"><div class="wrap">
-  <div class="section-heading reveal"><div><p class="eyebrow">02 / Complete public GitHub index</p><h2 id="projects-heading">Every project.<br><span class="muted-heading">The full picture.</span></h2></div><p>All {total} public repositories, from security tooling to infrastructure labs and supporting software. The {forks} public forks are labeled with their upstream projects.</p></div>
+  <div class="section-heading reveal"><div><p class="eyebrow">03 / Complete public GitHub index</p><h2 id="projects-heading">Every project.<br><span class="muted-heading">The full picture.</span></h2></div><p>All {total} public repositories, from security tooling to infrastructure labs and supporting software. The {forks} public forks are labeled with their upstream projects.</p></div>
   <div class="directory-summary"><span><strong>{total}</strong> public repositories</span><span><strong>{total-forks}</strong> non-fork repositories</span><span><strong>{forks}</strong> public forks</span><a href="{escape(catalog['profileUrl'])}?tab=repositories">GitHub profile <span aria-hidden="true">↗</span></a></div>
   <div class="project-controls requires-js" hidden>
     <div class="project-toolbar"><label class="project-search-label" for="project-search"><span>Search projects</span><span class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="project-search" type="search" placeholder="Try Python, Docker, triage, or a repository…" autocomplete="off" aria-controls="project-grid"></span></label><label class="project-sort-label" for="project-sort"><span>Sort by</span><select id="project-sort" aria-controls="project-grid"><option value="featured">Featured order</option><option value="name">Repository name</option><option value="updated">Recently updated</option></select></label></div>

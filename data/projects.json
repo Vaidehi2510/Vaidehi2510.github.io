@@ -377,7 +377,7 @@
       "name": "apollo-capabilities",
       "title": "Apollo capabilities",
       "url": "https://github.com/Vaidehi2510/apollo-capabilities",
-      "description": "A public fork of OpenTeams’ capability catalog, with reusable applications packaged as standalone Pixi projects and distributed as OCI artifacts. Includes example environments for local models, document summarization, data exploration, and notebooks.",
+      "description": "A public fork of OpenTeams’ catalog of standalone Pixi applications distributed as OCI artifacts. My open upstream PR proposes a PyDough MCP capability with a separate Python environment, a pinned dependency, and a default loopback bind.",
       "categories": [
         "forks",
         "ai"
@@ -393,15 +393,24 @@
       "pushedAt": "2026-06-26T23:50:05Z",
       "caseStudy": null,
       "sources": [
-        "https://github.com/Vaidehi2510/apollo-capabilities#readme"
+        "https://github.com/Vaidehi2510/apollo-capabilities#readme",
+        "https://github.com/openteams-ai/apollo-capabilities/pull/38"
       ],
-      "upstream": "https://github.com/openteams-ai/apollo-capabilities"
+      "upstream": "https://github.com/openteams-ai/apollo-capabilities",
+      "contributions": [
+        {
+          "url": "https://github.com/openteams-ai/apollo-capabilities/pull/38",
+          "status": "open",
+          "summary": "Proposed a standalone, locally bound PyDough MCP capability with an isolated dependency environment.",
+          "reviewedOn": "2026-10-20"
+        }
+      ]
     },
     {
       "name": "pydough-ce",
       "title": "PyDough Community Edition",
       "url": "https://github.com/Vaidehi2510/pydough-ce",
-      "description": "A public fork of PyDough Community Edition, which connects natural-language questions to a declarative analytics workflow and SQL execution. Includes database metadata generation and evaluation tooling. This entry describes the upstream project.",
+      "description": "A public fork of PyDough Community Edition for declarative analytics and SQL execution. My open upstream PR proposes fixes for SQLite paths, caller-selected database connections, and protecting caller-owned metadata during MCP session cleanup.",
       "categories": [
         "forks",
         "ai"
@@ -418,15 +427,24 @@
       "pushedAt": "2026-06-23T22:14:06Z",
       "caseStudy": null,
       "sources": [
-        "https://github.com/Vaidehi2510/pydough-ce#readme"
+        "https://github.com/Vaidehi2510/pydough-ce#readme",
+        "https://github.com/bodo-ai/pydough-ce/pull/17"
       ],
-      "upstream": "https://github.com/bodo-ai/pydough-ce"
+      "upstream": "https://github.com/bodo-ai/pydough-ce",
+      "contributions": [
+        {
+          "url": "https://github.com/bodo-ai/pydough-ce/pull/17",
+          "status": "open",
+          "summary": "Proposed upstream fixes to preserve the selected database connection and protect caller-owned metadata during MCP session cleanup.",
+          "reviewedOn": "2026-10-20"
+        }
+      ]
     },
     {
       "name": "frame-spec",
       "title": "Frame specification",
       "url": "https://github.com/Vaidehi2510/frame-spec",
-      "description": "A public fork of OpenTeams’ early specification for scoped, text-based artifacts that carry operational context for people and AI workers. Includes examples, validation tools, and an offline builder; the specification remains a draft.",
+      "description": "A public fork of OpenTeams’ draft specification for text-based AI context. My merged contributions cover trusted-source guidance, sensitive-data handling, validator scope, and aligning required fields with the specification.",
       "categories": [
         "forks",
         "ai"
@@ -442,9 +460,39 @@
       "pushedAt": "2026-06-09T20:48:37Z",
       "caseStudy": null,
       "sources": [
-        "https://github.com/Vaidehi2510/frame-spec#readme"
+        "https://github.com/Vaidehi2510/frame-spec#readme",
+        "https://github.com/openteams-ai/frame-spec/pull/5",
+        "https://github.com/openteams-ai/frame-spec/pull/7",
+        "https://github.com/openteams-ai/frame-spec/pull/10",
+        "https://github.com/openteams-ai/frame-spec/pull/12"
       ],
-      "upstream": "https://github.com/openteams-ai/frame-spec"
+      "upstream": "https://github.com/openteams-ai/frame-spec",
+      "contributions": [
+        {
+          "url": "https://github.com/openteams-ai/frame-spec/pull/5",
+          "status": "merged",
+          "summary": "Merged guidance on trusted sources, provenance limits, and inheritance behavior for AI context files.",
+          "reviewedOn": "2026-10-20"
+        },
+        {
+          "url": "https://github.com/openteams-ai/frame-spec/pull/7",
+          "status": "merged",
+          "summary": "Merged sensitive-data handling guidance for sharing organizational context with external AI services.",
+          "reviewedOn": "2026-10-20"
+        },
+        {
+          "url": "https://github.com/openteams-ai/frame-spec/pull/10",
+          "status": "merged",
+          "summary": "Documented validator scope so a frontmatter check is not mistaken for runtime or security assurance.",
+          "reviewedOn": "2026-10-20"
+        },
+        {
+          "url": "https://github.com/openteams-ai/frame-spec/pull/12",
+          "status": "merged",
+          "summary": "Aligned Frame validator required fields with the current specification.",
+          "reviewedOn": "2026-10-20"
+        }
+      ]
     }
   ]
 }
