@@ -1,0 +1,450 @@
+{
+  "reviewedOn": "2026-10-20",
+  "profileUrl": "https://github.com/Vaidehi2510",
+  "repositories": [
+    {
+      "name": "AURORA",
+      "title": "AURORA",
+      "url": "https://github.com/Vaidehi2510/AURORA",
+      "description": "A hackathon prototype that correlates cyber, physical, and intelligence events into evidence-linked alerts. A Python graph pipeline combines timing, location, semantic similarity, and shared entities; a React dashboard exposes the results, with optional AI analyst and voice integrations for incident review.",
+      "categories": [
+        "detection",
+        "ai"
+      ],
+      "area": "Detection & response",
+      "scope": "Hackathon prototype",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "scikit-learn",
+        "React"
+      ],
+      "fork": false,
+      "pushedAt": "2026-04-21T17:03:52Z",
+      "caseStudy": "aurora",
+      "sources": [
+        "https://github.com/Vaidehi2510/AURORA/blob/main/README.md",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/correlation_engine/engine.py",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/create_demo_frames.py",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/vision_pipeline.py",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/api.py",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/frontend/src/hooks/useSentinel.js",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/tests/test_correlation_engine.py",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/requirements.txt",
+        "https://github.com/Vaidehi2510/AURORA/blob/main/frontend/package.json"
+      ]
+    },
+    {
+      "name": "Watchpost",
+      "title": "Watchpost",
+      "url": "https://github.com/Vaidehi2510/Watchpost",
+      "description": "A native Apple-platform incident-triage app that keeps incident analysis on the device. Local text similarity finds related incidents, deterministic rules rank priority, and optional Apple Foundation Models generate briefs. Siri, Shortcuts, and Spotlight connect incident logging, triage, and resolution to everyday workflows.",
+      "categories": [
+        "detection",
+        "ai"
+      ],
+      "area": "Incident triage",
+      "scope": "On-device prototype",
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "SwiftData",
+        "App Intents"
+      ],
+      "fork": false,
+      "pushedAt": "2026-09-30T08:02:25Z",
+      "caseStudy": "watchpost",
+      "sources": [
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/README.md",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Packages/WatchpostCore/Sources/WatchpostCore/TriageEngine.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Packages/WatchpostCore/Sources/WatchpostCore/Embedding.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Packages/WatchpostCore/Sources/WatchpostCore/SimilarityIndex.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Watchpost/AI/BriefWriter.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Watchpost/Model/IncidentRepository.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Watchpost/Intents/WatchpostShortcuts.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/Packages/WatchpostCore/Tests/WatchpostCoreTests/TriageEngineTests.swift",
+        "https://github.com/Vaidehi2510/Watchpost/blob/main/project.yml"
+      ]
+    },
+    {
+      "name": "QA-testbot",
+      "title": "Patchsentry review engine",
+      "url": "https://github.com/Vaidehi2510/QA-testbot",
+      "description": "A pull-request QA engine that treats proposed code as untrusted input. Trusted runners execute tests in restricted containers, bind evidence and human decisions to an exact commit, and keep optional AI analysis separate from deterministic results. Browser checks and local model policies add explicit execution boundaries.",
+      "categories": [
+        "appsec",
+        "ai"
+      ],
+      "area": "Application security",
+      "scope": "Review engine",
+      "stack": [
+        "JavaScript",
+        "Node.js",
+        "Docker"
+      ],
+      "fork": false,
+      "pushedAt": "2026-10-01T21:25:57Z",
+      "caseStudy": "patchsentry",
+      "sources": [
+        "https://github.com/Vaidehi2510/QA-testbot",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/README.md",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/src/executor.js",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/.github/workflows/qa-execute.yml",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/src/unpack-source.py",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/src/decisions.js",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/src/autonomy/portal.js",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/src/ai/local.js",
+        "https://github.com/Vaidehi2510/QA-testbot/blob/main/test/executor.test.js"
+      ],
+      "reviewedCommit": "e4131c2a375667ed109c0414cc3e62df61acb8b7"
+    },
+    {
+      "name": "patchsentry-web",
+      "title": "Patchsentry workspace",
+      "url": "https://github.com/Vaidehi2510/patchsentry-web",
+      "description": "The account and reporting layer for Patchsentry, built with owner-scoped data access, secure sessions, login rate limits and hashed runner tokens. An outbound connector submits bounded reports and executes jobs only within a locally enrolled policy, keeping product-code execution outside the public web server.",
+      "categories": [
+        "appsec",
+        "ai"
+      ],
+      "area": "Application security",
+      "scope": "Web workspace",
+      "stack": [
+        "TypeScript",
+        "Next.js",
+        "PostgreSQL"
+      ],
+      "fork": false,
+      "pushedAt": "2026-10-01T21:15:02Z",
+      "caseStudy": "patchsentry",
+      "sources": [
+        "https://github.com/Vaidehi2510/patchsentry-web",
+        "https://github.com/Vaidehi2510/patchsentry-web/blob/main/README.md",
+        "https://github.com/Vaidehi2510/patchsentry-web/blob/main/src/lib/server/auth.ts",
+        "https://github.com/Vaidehi2510/patchsentry-web/blob/main/src/lib/server/api.ts",
+        "https://github.com/Vaidehi2510/patchsentry-web/blob/main/scripts/runner.mjs",
+        "https://github.com/Vaidehi2510/patchsentry-web/blob/main/test/backend.test.ts"
+      ],
+      "demo": "https://patchsentry.vercel.app",
+      "reviewedCommit": "4ba41bccf71278ef755fb83ca6fcd1d72f68ebff"
+    },
+    {
+      "name": "WARBREAK",
+      "title": "WARBREAK / FOGLINE",
+      "url": "https://github.com/Vaidehi2510/WARBREAK",
+      "description": "An exercise-planning prototype that extracts assumptions from a written plan, scores their fragility with an explicit rubric, and traces dependencies through a turn-based simulation. A local evidence catalog, fallback extraction, and post-exercise analysis support exploration of risk, resilience, and failure chains.",
+      "categories": [
+        "ai"
+      ],
+      "area": "Adversarial simulation",
+      "scope": "Simulation prototype",
+      "stack": [
+        "TypeScript",
+        "Next.js",
+        "Python",
+        "FastAPI"
+      ],
+      "fork": false,
+      "pushedAt": "2026-04-26T21:00:30Z",
+      "caseStudy": "warbreak",
+      "sources": [
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/README.md",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/extraction.py",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/evidence_catalog.json",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/intel.py",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/adjudication.py",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/llm_client.py",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/test_extraction.py",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/main.py",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/frontend/package.json",
+        "https://github.com/Vaidehi2510/WARBREAK/blob/main/backend/requirements.txt"
+      ]
+    },
+    {
+      "name": "devflow-ai",
+      "title": "DevFlow AI",
+      "url": "https://github.com/Vaidehi2510/devflow-ai",
+      "description": "A Python prototype exploring security review within an AI-assisted development pipeline. It generates code and test files, asks Claude to identify vulnerabilities, attempts remediation, rescans the result and opens a GitLab merge request with risk context. The dashboard streams workflow events and records run history.",
+      "categories": [
+        "appsec",
+        "ai"
+      ],
+      "area": "DevSecOps exploration",
+      "scope": "Workflow prototype",
+      "stack": [
+        "Python",
+        "Flask",
+        "Anthropic SDK",
+        "GitLab API"
+      ],
+      "fork": false,
+      "pushedAt": "2026-05-12T19:01:36Z",
+      "caseStudy": "devflow",
+      "sources": [
+        "https://github.com/Vaidehi2510/devflow-ai",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/README.md",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/agents/security_agent.py",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/agents/remediation_agent.py",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/agents/tester_agent.py",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/agents/deploy_agent.py",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/pipeline.py",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/webhook.py",
+        "https://github.com/Vaidehi2510/devflow-ai/blob/main/.gitlab-ci.yml"
+      ],
+      "reviewedCommit": "558aa9da6143d296b8e9060ea301d8401f61aca8"
+    },
+    {
+      "name": "Automated-Server-Provisioning-with-Ansible",
+      "title": "Server provisioning with Ansible",
+      "url": "https://github.com/Vaidehi2510/Automated-Server-Provisioning-with-Ansible",
+      "description": "Ansible configuration for Linux web and database servers, with package installation, admin-user setup, and Nginx and MariaDB service tasks. A learning lab that connects repeatable provisioning with explicit service configuration.",
+      "categories": [
+        "cloud"
+      ],
+      "area": "Infrastructure automation",
+      "scope": "Learning lab",
+      "stack": [
+        "Ansible",
+        "YAML",
+        "Linux",
+        "AWS EC2"
+      ],
+      "fork": false,
+      "pushedAt": "2024-06-24T10:02:07Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/Automated-Server-Provisioning-with-Ansible/tree/main/roles"
+      ]
+    },
+    {
+      "name": "rclone-Amazon-S3-project",
+      "title": "File transfers to Amazon S3",
+      "url": "https://github.com/Vaidehi2510/rclone-Amazon-S3-project",
+      "description": "A shell-script lab for copying files from a Linux virtual machine to Amazon S3 with rclone. Documents remote configuration and a Vagrant / VirtualBox development environment for a basic cloud-storage workflow.",
+      "categories": [
+        "cloud"
+      ],
+      "area": "Cloud operations",
+      "scope": "Shell lab",
+      "stack": [
+        "Shell",
+        "rclone",
+        "Amazon S3",
+        "Vagrant"
+      ],
+      "fork": false,
+      "pushedAt": "2024-06-03T10:13:03Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/rclone-Amazon-S3-project#readme"
+      ]
+    },
+    {
+      "name": "rclone-gdrive-project",
+      "title": "File transfers to Google Drive",
+      "url": "https://github.com/Vaidehi2510/rclone-gdrive-project",
+      "description": "A small rclone transfer script and setup notes for copying files from a Linux virtual machine to Google Drive. An early automation exercise focused on remote configuration and command-line file transfer.",
+      "categories": [
+        "cloud"
+      ],
+      "area": "Infrastructure automation",
+      "scope": "Shell lab",
+      "stack": [
+        "Shell",
+        "rclone",
+        "Google Drive",
+        "Linux"
+      ],
+      "fork": false,
+      "pushedAt": "2024-06-04T05:09:13Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/rclone-gdrive-project#readme"
+      ]
+    },
+    {
+      "name": "pydough-mcp-agent",
+      "title": "PyDough MCP agent",
+      "url": "https://github.com/Vaidehi2510/pydough-mcp-agent",
+      "description": "Connects a Pydantic AI agent to a PyDough MCP server over stdio. Python opens the database session before the agent asks a question and requests closure, demonstrating an end-to-end tool workflow against SQLite sample data.",
+      "categories": [
+        "ai"
+      ],
+      "area": "AI systems integration",
+      "scope": "Proof of concept",
+      "stack": [
+        "Python",
+        "Pydantic AI",
+        "MCP",
+        "SQLite"
+      ],
+      "fork": false,
+      "pushedAt": "2026-06-19T17:14:17Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/pydough-mcp-agent/blob/main/main.py"
+      ]
+    },
+    {
+      "name": "Collab_website",
+      "title": "OpenTeams Collab release site",
+      "url": "https://github.com/Vaidehi2510/Collab_website",
+      "description": "An interactive release-notes website for OpenTeams Collab. Built with HTML, CSS, and JavaScript, with accessible navigation, feature switching, responsive layouts, and motion controls; included as supporting frontend engineering work.",
+      "categories": [
+        "foundations"
+      ],
+      "area": "Supporting software",
+      "scope": "Web project",
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "fork": false,
+      "pushedAt": "2026-07-28T05:26:43Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/Collab_website#readme"
+      ],
+      "demo": "https://collab-website-pi.vercel.app"
+    },
+    {
+      "name": "Convex-Hull-using-Divide-and-Conquer",
+      "title": "Convex hull: divide and conquer",
+      "url": "https://github.com/Vaidehi2510/Convex-Hull-using-Divide-and-Conquer",
+      "description": "Python implementation of a convex-hull algorithm using divide and conquer, brute-force handling for small inputs, and upper/lower tangent merging. Includes runtime measurements and a project report exploring the algorithm.",
+      "categories": [
+        "foundations"
+      ],
+      "area": "Engineering fundamentals",
+      "scope": "Algorithm lab",
+      "stack": [
+        "Python",
+        "Algorithms"
+      ],
+      "fork": false,
+      "pushedAt": "2025-10-15T21:36:56Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/Convex-Hull-using-Divide-and-Conquer#readme"
+      ]
+    },
+    {
+      "name": "project1-runtime-analysis",
+      "title": "Experimental runtime analysis",
+      "url": "https://github.com/Vaidehi2510/project1-runtime-analysis",
+      "description": "Measures an algorithm’s runtime across increasing input sizes and repeated trials, then reports average execution times. A Python exercise connecting empirical performance measurements with theoretical complexity analysis.",
+      "categories": [
+        "foundations"
+      ],
+      "area": "Engineering fundamentals",
+      "scope": "Benchmark lab",
+      "stack": [
+        "Python",
+        "Benchmarking"
+      ],
+      "fork": false,
+      "pushedAt": "2025-09-26T00:18:02Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/project1-runtime-analysis#readme"
+      ]
+    },
+    {
+      "name": "Vaidehi2510.github.io",
+      "title": "Security engineering portfolio",
+      "url": "https://github.com/Vaidehi2510/Vaidehi2510.github.io",
+      "description": "The source for this security engineering portfolio: a responsive static site with searchable public projects, technical case studies, keyboard navigation, dark mode, and reduced-motion support. Published through GitHub Pages.",
+      "categories": [
+        "foundations"
+      ],
+      "area": "Supporting software",
+      "scope": "This website",
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "GitHub Pages"
+      ],
+      "fork": false,
+      "pushedAt": "2026-10-20T19:25:07Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/Vaidehi2510.github.io#readme"
+      ]
+    },
+    {
+      "name": "apollo-capabilities",
+      "title": "Apollo capabilities",
+      "url": "https://github.com/Vaidehi2510/apollo-capabilities",
+      "description": "A public fork of OpenTeams’ capability catalog, with reusable applications packaged as standalone Pixi projects and distributed as OCI artifacts. Includes example environments for local models, document summarization, data exploration, and notebooks.",
+      "categories": [
+        "forks",
+        "ai"
+      ],
+      "area": "Public fork",
+      "scope": "Fork",
+      "stack": [
+        "Pixi",
+        "Python",
+        "OCI"
+      ],
+      "fork": true,
+      "pushedAt": "2026-06-26T23:50:05Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/apollo-capabilities#readme"
+      ],
+      "upstream": "https://github.com/openteams-ai/apollo-capabilities"
+    },
+    {
+      "name": "pydough-ce",
+      "title": "PyDough Community Edition",
+      "url": "https://github.com/Vaidehi2510/pydough-ce",
+      "description": "A public fork of PyDough Community Edition, which connects natural-language questions to a declarative analytics workflow and SQL execution. Includes database metadata generation and evaluation tooling. This entry describes the upstream project.",
+      "categories": [
+        "forks",
+        "ai"
+      ],
+      "area": "Public fork",
+      "scope": "Fork",
+      "stack": [
+        "Python",
+        "PyDough",
+        "SQL",
+        "DSPy"
+      ],
+      "fork": true,
+      "pushedAt": "2026-06-23T22:14:06Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/pydough-ce#readme"
+      ],
+      "upstream": "https://github.com/bodo-ai/pydough-ce"
+    },
+    {
+      "name": "frame-spec",
+      "title": "Frame specification",
+      "url": "https://github.com/Vaidehi2510/frame-spec",
+      "description": "A public fork of OpenTeams’ early specification for scoped, text-based artifacts that carry operational context for people and AI workers. Includes examples, validation tools, and an offline builder; the specification remains a draft.",
+      "categories": [
+        "forks",
+        "ai"
+      ],
+      "area": "Public fork",
+      "scope": "Fork",
+      "stack": [
+        "Markdown",
+        "Python",
+        "HTML"
+      ],
+      "fork": true,
+      "pushedAt": "2026-06-09T20:48:37Z",
+      "caseStudy": null,
+      "sources": [
+        "https://github.com/Vaidehi2510/frame-spec#readme"
+      ],
+      "upstream": "https://github.com/openteams-ai/frame-spec"
+    }
+  ]
+}

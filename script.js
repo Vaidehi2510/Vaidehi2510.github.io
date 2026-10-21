@@ -40,7 +40,7 @@
   const setTheme = (theme) => {
     root.dataset.theme = theme;
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = theme === 'dark' ? '#1d211e' : '#f7f5ef';
+    if (themeColor) themeColor.content = theme === 'dark' ? '#14211e' : '#f3f5f1';
     if (!themeButton) return;
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     themeButton.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
