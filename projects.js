@@ -27,6 +27,52 @@
 
   let activeFilter = filters.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.projectFilter || 'all';
   const byFeatured = (a, b) => a.order - b.order || a.index - b.index;
+  const resultAnimations = new Set();
+  const motionEnabled = () => document.documentElement.dataset.motion === 'on' && !document.hidden;
+  const cancelResultAnimations = () => {
+    resultAnimations.forEach((animation) => animation.cancel());
+    resultAnimations.clear();
+  };
+
+  const transitionResults = (change) => {
+    const before = new Map();
+    if (motionEnabled()) {
+      cards.forEach(({ element }) => {
+        if (!element.hidden) before.set(element, element.getBoundingClientRect());
+      });
+    }
+    cancelResultAnimations();
+    change();
+    if (!motionEnabled()) return;
+
+    cards.forEach(({ element }) => {
+      if (element.hidden || typeof element.animate !== 'function') return;
+      const after = element.getBoundingClientRect();
+      if (after.bottom <= 0 || after.top >= window.innerHeight) return;
+      const previous = before.get(element);
+      const limit = (value) => Math.max(-48, Math.min(48, value));
+      const x = previous ? limit(previous.left - after.left) : 0;
+      const y = previous ? limit(previous.top - after.top) : 12;
+      if (previous && Math.abs(x) < 0.5 && Math.abs(y) < 0.5) return;
+      // Individual translate composes with the card's existing hover transform.
+      // Results and counts already reflect the new state before motion begins.
+      const animation = element.animate([
+        { translate: `${x}px ${y}px`, opacity: previous ? 1 : 0.45 },
+        { translate: '0px 0px', opacity: 1 }
+      ], { duration: 320, easing: 'cubic-bezier(.2,.75,.25,1)' });
+      resultAnimations.add(animation);
+      const release = () => resultAnimations.delete(animation);
+      animation.addEventListener('finish', release, { once: true });
+      animation.addEventListener('cancel', release, { once: true });
+    });
+  };
+
+  new MutationObserver(() => {
+    if (!motionEnabled()) cancelResultAnimations();
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-motion'] });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelResultAnimations();
+  });
 
   const sortCards = () => {
     const ordered = [...cards];
@@ -37,6 +83,7 @@
   };
 
   const updateResults = () => {
+    cancelResultAnimations();
     const terms = normalize(search.value).split(/\s+/).filter(Boolean);
     let visible = 0;
     cards.forEach((card) => {
@@ -87,13 +134,17 @@
     updateResults();
   });
   sort.addEventListener('change', () => {
-    sortCards();
-    updateResults();
+    transitionResults(() => {
+      sortCards();
+      updateResults();
+    });
   });
   filters.forEach((button) => {
     button.addEventListener('click', () => {
-      activeFilter = button.dataset.projectFilter;
-      updateResults();
+      transitionResults(() => {
+        activeFilter = button.dataset.projectFilter;
+        updateResults();
+      });
     });
   });
   reset.addEventListener('click', () => {
