@@ -49,16 +49,14 @@
 
   [
     ['work', 'Selected security projects'],
-    ['practice', '100+ CTFs completed'],
     ['upstream', 'Upstream contributions'],
-    ['notes', 'Security engineering notes'],
     ['projects', 'All public repositories'],
     ['about', 'About Vaidehi'],
     ['contact', 'Get in touch'],
   ].forEach(([id, title]) => {
     const target = document.getElementById(id);
     if (!target) return;
-    const description = text(target, '.section-heading > p') || text(target, '.about-copy > p:not(.eyebrow)') || text(target, '.practice-copy > p') || text(target, '.contact-availability');
+    const description = text(target, '.section-heading > p') || text(target, '.about-copy > p:not(.eyebrow)') || text(target, '.contact-availability');
     addEntry(target, title, 'Section', description, `${id} ${text(target, 'h2')}`);
   });
 
